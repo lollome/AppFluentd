@@ -21,8 +21,6 @@ public class FluentdMatchTwoController
 
     private static FluentLogger LOG = FluentLogger.getLogger("matchtwo.test");
 
-
-
     @GetMapping
     @RequestMapping("/matchtwo")
     public ResponseEntity<String> getDati(@RequestParam String param)

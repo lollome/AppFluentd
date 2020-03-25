@@ -1,0 +1,32 @@
+# lib gestite e file compilati (model/component)
+/bin/
+/lib/
+/classes/
+/deploy/
+**/tmp/
+/build/build*/
+
+# Estensioni
+#*.jar
+#*.zip
+
+# File specifici
+[Mm]anifest.mf
+vuo[rt]o.txt
+
+
+
+**/*.class
+bin/
+
+# Gradle
+.gradle
+target
+
+.idea/
+
+# Eclipse
+**/*.classpath
+**/*.factorypath
+.settings
+**/*.project

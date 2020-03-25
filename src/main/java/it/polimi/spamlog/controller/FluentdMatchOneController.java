@@ -16,22 +16,21 @@ import java.util.Map;
 public class FluentdMatchOneController {
 
 
-    private static final org.slf4j.Logger Logger =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
+    //private static final org.slf4j.Logger Logger =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
     private static FluentLogger LOG = FluentLogger.getLogger("matchone.test");
 
 
     @GetMapping
     @RequestMapping("/matchone")
-    public ResponseEntity<String> getDati(@RequestParam String RCR)
+    public ResponseEntity<String> getDati(@RequestParam String param)
     {
-       Logger.info("ciao fluent");
-        MDC.put("dest", "journal");
 
         Map<String, Object> data = new HashMap<>();
-        data.put("from", "userA");
-        data.put("to", "userB");
-        LOG.log("follow", data);
+        data.put("param1", param);
+        data.put("param2", "Hello fluent");
+
+        LOG.log("test", data);
 
 
         return new ResponseEntity<>("ok", HttpStatus.OK);

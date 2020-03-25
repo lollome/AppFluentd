@@ -12,19 +12,11 @@ public class ServerFluentd implements CommandLineRunner
 {
     private static final Logger logger = LoggerFactory.getLogger(ServerFluentd.class);
 
-    @Autowired
-    DisponibilitaService disponibilitaService;
-    @Autowired
-    private ClientConfig clientConfig;
 
     @Override
     public void run(String... args)
     {
         logger.info(args[0]);
-
-        String path = args[0] !=null && "disp".equals(args[0]) ? clientConfig.getPathDisponibilita() : clientConfig.getUrldispo();
-
-        //disponibilitaService.getDisponibilita(path);
 
     }
 

@@ -21,20 +21,18 @@ public class FluentdMatchTwoController
 
     private static FluentLogger LOG = FluentLogger.getLogger("matchtwo.test");
 
-    private final Logger log = LoggerFactory.getLogger(FluentdMatchTwoController.class);
-
 
 
     @GetMapping
     @RequestMapping("/matchtwo")
-    public ResponseEntity<String> getDati(@RequestParam String p)
+    public ResponseEntity<String> getDati(@RequestParam String param)
     {
 
         String json = null;
 
         Map<String, Object> data = new HashMap<>();
-        data.put("rcr", p);
-        LOG.log("parametro",data);
+        data.put("param", param);
+        LOG.log("dati",data);
 
         return new ResponseEntity<>("ok", HttpStatus.OK);
 

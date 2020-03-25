@@ -1,0 +1,526 @@
+Starting ServerAs400 on lorenzo with PID 14399 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@64b0598: startup date [Thu Jul 25 21:00:30 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1639 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@64b0598: startup date [Thu Jul 25 21:00:30 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String,java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.177 seconds (JVM running for 3.634)
+disp
+Starting ServerAs400 on lorenzo with PID 14799 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e2055d6: startup date [Thu Jul 25 21:10:44 CEST 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$8c51242c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2104 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e2055d6: startup date [Thu Jul 25 21:10:44 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String,java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.999 seconds (JVM running for 4.384)
+disp
+ Esecuzione  Esecuzione1Task
+ Esecuzione  Esecuzione1Task fine
+ Esecuzione  Esecuzione2Task
+ Esecuzione  Esecuzione2Task fine
+ Esecuzione  Esecuzione3Task
+ Esecuzione  Esecuzione3Task fine
+ Esecuzione  Esecuzione4Task
+ Esecuzione  Esecuzione4Task fine
+ Esecuzione  Esecuzione5Task
+ Esecuzione  Esecuzione5Task fine
+ Esecuzione  Esecuzione6Task
+ Esecuzione  Esecuzione6Task fine
+ Esecuzione  Esecuzione7Task 
+ Esecuzione  Esecuzione7Task fine
+ Esecuzione  Esecuzione10Task 
+ Esecuzione  Esecuzione10Task fine
+ Esecuzione  Esecuzione8Task 
+ Esecuzione  Esecuzione8Task fine
+ Esecuzione  Esecuzione11Task 
+ Esecuzione  Esecuzione11Task fine
+ Esecuzione  Esecuzione9Task 
+ Esecuzione  Esecuzione9Task fine
+ Esecuzione  AsyncArchiviTask
+ Esecuzione  AsyncArchiviTask fine
+Starting ServerAs400 on lorenzo with PID 15633 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2ad48653: startup date [Thu Jul 25 21:17:12 CEST 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$93cd664b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 3559 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2ad48653: startup date [Thu Jul 25 21:17:12 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String,java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 7.017 seconds (JVM running for 7.683)
+disp
+Starting ServerAs400 on lorenzo with PID 15754 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2421cc4: startup date [Thu Jul 25 21:17:49 CEST 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$4843755d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 4077 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2421cc4: startup date [Thu Jul 25 21:17:49 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String,java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 7.484 seconds (JVM running for 8.213)
+disp
+ Esecuzione  Esecuzione2Task
+ Esecuzione  Esecuzione2Task fine
+ Esecuzione  Esecuzione3Task
+ Esecuzione  Esecuzione3Task fine
+ Esecuzione  Esecuzione4Task
+ Esecuzione  Esecuzione4Task fine
+ Esecuzione  Esecuzione5Task
+ Esecuzione  Esecuzione5Task fine
+ Esecuzione  Esecuzione6Task
+ Esecuzione  Esecuzione6Task fine
+ Esecuzione  Esecuzione7Task 
+ Esecuzione  Esecuzione7Task fine
+ Esecuzione  Esecuzione8Task 
+ Esecuzione  Esecuzione8Task fine
+ Esecuzione  Esecuzione10Task 
+ Esecuzione  Esecuzione10Task fine
+ Esecuzione  Esecuzione9Task 
+ Esecuzione  Esecuzione9Task fine
+ Esecuzione  Esecuzione11Task 
+ Esecuzione  Esecuzione11Task fine
+ Esecuzione  Esecuzione1Task
+ Esecuzione  Esecuzione1Task fine
+ Esecuzione  AsyncArchiviTask
+ Esecuzione  AsyncArchiviTask fine
+ Esecuzione  Esecuzione6Task
+ Esecuzione  Esecuzione6Task fine
+ Esecuzione  Esecuzione1Task
+Loaded expression factory via original TCCL
+Starting ServerAs400 on lorenzo with PID 11822 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@41488b16: startup date [Mon Oct 28 11:03:54 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$193e1920] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2427 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@41488b16: startup date [Mon Oct 28 11:03:54 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioDati(java.lang.String,java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 4.444 seconds (JVM running for 5.075)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'pcr' is not present]
+Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'pcr' is not present]
+Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'pcr' is not present]
+Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'pcr' is not present]
+Starting ServerAs400 on lorenzo with PID 13754 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7d446ed1: startup date [Mon Oct 28 11:31:53 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$14265242] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1845 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7d446ed1: startup date [Mon Oct 28 11:31:53 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioDati(java.lang.String,java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.674 seconds (JVM running for 4.436)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:32:01", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:33:03", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:33:43", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:34:52", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:35:27", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:36:12", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:38:33", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:39:24", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:39:40", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 11:47:22", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+Starting ServerAs400 on lorenzo with PID 16936 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@479460a6: startup date [Mon Oct 28 12:31:22 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$668010d9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2033 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@479460a6: startup date [Mon Oct 28 12:31:22 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'invioDatiController' method 
+public java.lang.String InvioDatiController.getDati(java.lang.String)
+to {[/b2b/requestData]}: There is already 'disponibilitaController' bean method
+public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String) mapped.
+Stopping service [Tomcat]
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'invioDatiController' method 
+public java.lang.String InvioDatiController.getDati(java.lang.String)
+to {[/b2b/requestData]}: There is already 'disponibilitaController' bean method
+public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String) mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at ServerFluentd.main(ServerAs400.java:36)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'invioDatiController' method 
+public java.lang.String InvioDatiController.getDati(java.lang.String)
+to {[/b2b/requestData]}: There is already 'disponibilitaController' bean method
+public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String) mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:581)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:545)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:267)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$1(AbstractHandlerMethodMapping.java:252)
+	at java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:250)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:219)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:189)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:136)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695)
+	... 16 common frames omitted
+Starting ServerAs400 on lorenzo with PID 18859 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@38b27cdc: startup date [Mon Oct 28 13:08:00 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$a5e69d4c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2307 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@38b27cdc: startup date [Mon Oct 28 13:08:00 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioDati(java.lang.String,java.lang.String)
+Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'invioDatiController' method 
+public java.lang.String InvioDatiController.getDati(java.lang.String)
+to {[/b2b/requestData]}: There is already 'disponibilitaController' bean method
+public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String) mapped.
+Stopping service [Tomcat]
+
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'requestMappingHandlerMapping' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Invocation of init method failed; nested exception is java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'invioDatiController' method 
+public java.lang.String InvioDatiController.getDati(java.lang.String)
+to {[/b2b/requestData]}: There is already 'disponibilitaController' bean method
+public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String) mapped.
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:759)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:780)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:333)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1277)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1265)
+	at ServerFluentd.main(ServerAs400.java:36)
+Caused by: java.lang.IllegalStateException: Ambiguous mapping. Cannot map 'invioDatiController' method 
+public java.lang.String InvioDatiController.getDati(java.lang.String)
+to {[/b2b/requestData]}: There is already 'disponibilitaController' bean method
+public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String) mapped.
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.assertUniqueMethodMapping(AbstractHandlerMethodMapping.java:581)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping$MappingRegistry.register(AbstractHandlerMethodMapping.java:545)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.registerHandlerMethod(AbstractHandlerMethodMapping.java:267)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.lambda$detectHandlerMethods$1(AbstractHandlerMethodMapping.java:252)
+	at java.util.LinkedHashMap.forEach(LinkedHashMap.java:684)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.detectHandlerMethods(AbstractHandlerMethodMapping.java:250)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:219)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.afterPropertiesSet(AbstractHandlerMethodMapping.java:189)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping.afterPropertiesSet(RequestMappingHandlerMapping.java:136)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1758)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1695)
+	... 16 common frames omitted
+Starting ServerAs400 on lorenzo with PID 19030 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7975d1d8: startup date [Mon Oct 28 13:10:19 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$45c2289a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2890 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7975d1d8: startup date [Mon Oct 28 13:10:19 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData1]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public java.lang.String InvioDatiController.getDati(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioDati(java.lang.String,java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 4.857 seconds (JVM running for 5.327)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 25 ms
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 13:10:29", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required String parameter 'rcr' is not present]
+Starting ServerAs400 on lorenzo with PID 19772 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@28194a50: startup date [Mon Oct 28 13:19:51 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$1e080e97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2150 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@28194a50: startup date [Mon Oct 28 13:19:51 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData1]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public java.lang.String InvioDatiController.getDati(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioDati(java.lang.String,java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 4.171 seconds (JVM running for 4.854)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 27 ms
+Starting ServerAs400 on lorenzo with PID 27241 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@13526e59: startup date [Mon Oct 28 15:30:46 CET 2019]; root of context hierarchy
+Bean 'asyncTaskConfig' of type [AsyncTaskConfig$$EnhancerBySpringCGLIB$$c7412805] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Initializing ExecutorService 
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1775 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@13526e59: startup date [Mon Oct 28 15:30:46 CET 2019]; root of context hierarchy
+Mapped "{[/b2b/requestData1]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public java.lang.String InvioDatiController.getDati(java.lang.String)
+Mapped "{[/b2b/settingdata]}" onto public java.lang.String InvioDatiController.invioDati(java.lang.String,java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+No TaskScheduler/ScheduledExecutorService bean found for scheduled processing
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.57 seconds (JVM running for 4.196)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 15:41:57", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}
+{"informazioni_trasmissione": {"data_trasmissione": "10/28/2019 15:42:19", "customer": "EURB2B_ORDER"}, "testata_oh": {"anno_ordine": "2019", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "mm_gg_ordine": "1111", "causale_ordine": "1", "codice_cliente": "010121", "data_prima_evasione": "11112019", "codice_destinazione_merce": "1", "data_rif_ordine_cliente": "11112019", "modalita_spedizione": "1", "modalita_consegna": "1", "codice_listino_prezzi": "1"}, "righe_oh": [{"anno_ordine": "11", "numero_ordine": 1, "divisione": "A", "codice_societa": "EUR", "riga_supp_esterno": 1, "codice_articolo": "V10002", "codice_causale_ordine": "1", "qta_ordinata": 3, "prezzo_digitato": 25}], "vettori": ["186"], "note": ["note prova 1"]}

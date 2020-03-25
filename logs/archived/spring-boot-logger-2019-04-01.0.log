@@ -1,0 +1,306 @@
+Starting ServerAs400 on lorenzo with PID 6218 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@74589991: startup date [Mon Apr 01 19:08:35 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 2485 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@74589991: startup date [Mon Apr 01 19:08:35 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 6.252 seconds (JVM running for 7.038)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 13 ms
+Starting ServerAs400 on lorenzo with PID 7208 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@327bcebd: startup date [Mon Apr 01 19:18:06 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1954 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@327bcebd: startup date [Mon Apr 01 19:18:06 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.661 seconds (JVM running for 4.226)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+Starting ServerAs400 on lorenzo with PID 10861 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1984b1f: startup date [Mon Apr 01 20:38:41 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1614 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1984b1f: startup date [Mon Apr 01 20:38:41 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.367 seconds (JVM running for 3.862)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+Starting ServerAs400 on lorenzo with PID 11000 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e6104fc: startup date [Mon Apr 01 20:40:20 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1387 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3e6104fc: startup date [Mon Apr 01 20:40:20 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 2.909 seconds (JVM running for 3.668)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 14 ms
+Starting ServerAs400 on lorenzo with PID 11397 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1b75c2e3: startup date [Mon Apr 01 20:45:55 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1464 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1b75c2e3: startup date [Mon Apr 01 20:45:55 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 2.793 seconds (JVM running for 3.345)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 18 ms
+Starting ServerAs400 on lorenzo with PID 11793 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@479460a6: startup date [Mon Apr 01 20:53:06 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1752 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@479460a6: startup date [Mon Apr 01 20:53:06 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.472 seconds (JVM running for 3.872)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 15 ms
+Starting ServerAs400 on lorenzo with PID 11947 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@24105dc5: startup date [Mon Apr 01 20:55:08 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1596 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@24105dc5: startup date [Mon Apr 01 20:55:08 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.142 seconds (JVM running for 3.709)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 19 ms
+Starting ServerAs400 on lorenzo with PID 12098 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7068e664: startup date [Mon Apr 01 20:55:56 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1637 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7068e664: startup date [Mon Apr 01 20:55:56 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 3.189 seconds (JVM running for 3.607)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 17 ms
+Starting ServerAs400 on lorenzo with PID 12208 (/home/lorenzo/workspace/idea_projects/ServerAs400Json/build/classes/java/main started by lorenzo in /home/lorenzo/workspace/idea_projects/ServerAs400Json)
+Running with Spring Boot v2.0.5.RELEASE, Spring v5.0.9.RELEASE
+No active profile set, falling back to default profiles: default
+Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6239aba6: startup date [Mon Apr 01 20:56:29 CEST 2019]; root of context hierarchy
+Tomcat initialized with port(s): 8100 (http)
+Initializing ProtocolHandler ["http-nio-8100"]
+Starting service [Tomcat]
+Starting Servlet Engine: Apache Tomcat/8.5.34
+The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 1547 ms
+Servlet dispatcherServlet mapped to [/]
+Mapping filter: 'characterEncodingFilter' to: [/*]
+Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+Mapping filter: 'httpPutFormContentFilter' to: [/*]
+Mapping filter: 'requestContextFilter' to: [/*]
+Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6239aba6: startup date [Mon Apr 01 20:56:29 CEST 2019]; root of context hierarchy
+Mapped "{[/b2b/forecast]}" onto public java.lang.String InvioDatiController.invioForecast(java.lang.String)
+Mapped "{[/b2b/budget]}" onto public org.json.simple.JSONObject InvioDatiController.getDisponibilita(java.lang.String)
+Mapped "{[/b2b/requestData]}" onto public org.json.simple.JSONObject DisponibilitaController.getJSON(java.lang.String)
+Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+Registering beans for JMX exposure on startup
+Starting ProtocolHandler ["http-nio-8100"]
+Using a shared selector for servlet write/read
+Tomcat started on port(s): 8100 (http) with context path ''
+Started ServerAs400 in 2.963 seconds (JVM running for 3.34)
+disp
+Initializing Spring FrameworkServlet 'dispatcherServlet'
+FrameworkServlet 'dispatcherServlet': initialization started
+FrameworkServlet 'dispatcherServlet': initialization completed in 23 ms

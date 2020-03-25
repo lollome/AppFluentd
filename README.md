@@ -1,27 +1,24 @@
  - Progetto Fluentd 
  
+   L'applicazione Spring logga con libreria fluentd 
+   
+   Fluentd -> Elasticsearch -> Kibana
  
- - Docker compose file for setting up a EFK service
- - ================================================
  
- Elasticsearch, Fluentd, and Kibana
- 
+ - EFK è installaro tramite Docker
 
  
  
- 
- # Installarela docker Elasticsearch, Fluentd, and Kibana
+ # Installazione docker Elasticsearch, Fluentd, and Kibana
                       
  
  ### UP DOCKER 
  
     docker-compose -f docker-compose.yml -f httpd/httpd.yml up
  
- 
 
  ### DOWN DOCKER
 
- 
     docker-compose -f docker-compose.yml -f httpd/httpd.yml down
  
  
@@ -107,6 +104,14 @@
     curl -X GET http://localhost:8080/fluentd/matchtwo?p=ciaofluent
    
     2020-03-25 18:39:05 +0000 matchtwo.test.dati: {"param":"ciaofluent"}
+    
+    
+    param:ciaofluent 
+    @timestamp:Mar 25, 2020 @ 22:08:58.000 
+    @log_name:matchtwo.test.dati 
+    _id:UuyGE3EBqkgChWXa37p3 
+    _type:access_log 
+    _index:fluentd-20200325 _score: -
  
   
     nel primo a causa del filter viene aggiunto host_param

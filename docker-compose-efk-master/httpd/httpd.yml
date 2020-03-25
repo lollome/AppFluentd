@@ -1,11 +1,11 @@
-version: '2'
+version: '3'
 services:
   web:
-    image: httpd:2.2.32
+    image: httpd
     ports:
-      - "80:80"
-    depends_on:
-      - fluentd
+    - "80:80"
+    links:
+    - fluentd
     logging:
       driver: "fluentd"
       options:

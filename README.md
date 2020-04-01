@@ -94,9 +94,7 @@
  </match>
  
  chiamo i due controller con i conseguenti log che si posso osservare
- 
- 
-    curl -X GET http://localhost:8080/fluentd/matchone?param=ciaofluent
+
    
     2020-03-25 18:37:49 +0000 matchone.test.test: {"param1":"ciaofluent","param2":"Hello fluent","host_param":"2ae529af7aad"}
    

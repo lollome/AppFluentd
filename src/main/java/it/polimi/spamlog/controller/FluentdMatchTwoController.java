@@ -26,11 +26,14 @@ public class FluentdMatchTwoController
     public ResponseEntity<String> getDati(@RequestParam String param)
     {
 
-        String json = null;
+        String json = "{\"name\":  \"lorenzo\"}";
 
         Map<String, Object> data = new HashMap<>();
-        data.put("param", param);
-        LOG.log("dati",data);
+
+
+        data.put("log", json);
+
+        LOG.log("data",data);
 
         return new ResponseEntity<>("ok", HttpStatus.OK);
 

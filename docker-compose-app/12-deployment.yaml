@@ -50,8 +50,8 @@ spec:
         #    name: gestioneservizi-test-env
 
         volumeMounts:
-        - name: polij-secret-app
-          mountPath: /etc/polij.d/01-secret/
+        - name: secret-app
+          mountPath: /etc/app.d/01-secret/
 
           #        readinessProbe:
           #failureThreshold: 3
@@ -70,8 +70,8 @@ spec:
             cpu: 100m
  
       volumes:
-      - name: polij-secret-app
+      - name: secret-app
         secret:
 #          defaultMode: 0444
-          secretName: polij-app-035002
+          secretName: app-035002
 

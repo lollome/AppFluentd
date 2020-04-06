@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: spamfluentd
+    release: spamfluentd-1
+  name: d-spamfluentd
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: spamfluentd
+      release: spamfluentd-1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  minReadySeconds: 30
+
+  template:
+    metadata:
+      labels:
+        app: spamfluentd
+        release: spamfluentd-1
+    spec:
+      imagePullSecrets:
+      - name: kube-registry
+      containers:
+      - name: spamfluentd
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+
+        image: localhost:5000/appfluentd/spam-fluentd:latest
+      #  image: registry.gitlab.com/asict-framework/polij-deploy/apps/gestioneservizi:latest
+        imagePullPolicy: IfNotPresent
+        #args: ['/bin/ls', '-al', '/etc/polij']
+        # al momento non usiamo in alcun modo l'environment per la configurazione
+        #env:
+        #- name: APP_ENV
+        #  value: test
+        #- name: APP_VERSION
+        #  value: 1.4.4
+        #envFrom:
+        #- configMapRef:
+        #    name: gestioneservizi-test-env
+        #- secretRef:
+        #    name: gestioneservizi-test-env
+
+        volumeMounts:
+        - name: polij-secret-app
+          mountPath: /etc/polij.d/01-secret/
+
+          #        readinessProbe:
+          #failureThreshold: 3
+          #tcpSocket:
+          #  port: 443
+          #initialDelaySeconds: 30
+          #periodSeconds: 60
+          #successThreshold: 1
+          #timeoutSeconds: 10
+       
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+
+        resources:
+          requests:
+            cpu: 100m
+ 
+      volumes:
+      - name: polij-secret-app
+        secret:
+#          defaultMode: 0444
+          secretName: polij-app-035002
+

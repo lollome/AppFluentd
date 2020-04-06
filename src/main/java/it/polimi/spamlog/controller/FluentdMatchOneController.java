@@ -1,7 +1,5 @@
 package it.polimi.spamlog.controller;
 
-import org.fluentd.logger.FluentLogger;
-import org.slf4j.MDC;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,9 +14,9 @@ import java.util.Map;
 public class FluentdMatchOneController {
 
 
-    //private static final org.slf4j.Logger Logger =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
+    private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = FluentLogger.getLogger("matchone.test");
+    //private static FluentLogger LOG = FluentLogger.getLogger("matchone.test");
 
 
     @GetMapping
@@ -30,7 +28,7 @@ public class FluentdMatchOneController {
         data.put("param1", param);
         data.put("param2", "Hello fluent");
 
-        LOG.log("test", data);
+        LOG.info("test", data);
 
 
         return new ResponseEntity<>("ok", HttpStatus.OK);

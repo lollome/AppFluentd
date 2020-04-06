@@ -15,12 +15,12 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    baseName = 'server-as400'
+    baseName = 'spam-fluentd'
     version =  '0.1.0'
 }
 
 group 'it.polimi'
-version '1.0-SNAPSHOT'
+version '1.0.0'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -54,11 +54,9 @@ dependencies {
     compile('org.apache.commons:commons-lang3:3.6')
     // Apache POI
 	compile('org.apache.poi:poi-ooxml:3.17')
-
-    // https://mvnrepository.com/artifact/net.logstash.logback/logstash-logback-encoder
-    compile group: 'net.logstash.logback', name: 'logstash-logback-encoder', version: '6.3'
+    
 // https://mvnrepository.com/artifact/org.fluentd/fluent-logger
-    compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'
+    //compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'
 
 
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple

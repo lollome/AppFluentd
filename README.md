@@ -173,7 +173,7 @@
         le images docker devono essere rese disponibili per poter essere usate da + parti
         e per poter far ciò avremmo di un repository registry; noi non ne abbiamo uno per cui dockerizziamo un registry
     
-        1. Creare il registry su minikube (dal file yml)
+        a. Creare il registry su minikube (dal file yml)
                 
                 $ kubectl create -f kube-registry.yaml
                 
@@ -187,20 +187,24 @@
                 
                 se andato tutto bene facciamo il forward -> punto 2
         
-        2. Forward della porta 5000 da localhost a minikube
+        b. Forward della porta 5000 da localhost a minikube
     
                 $ kubectl port-forward -n kube-system kube-registry-v0-b2n5w 5000:5000
     
               N.B: il nome del pod varia ogni volta.
     
-        3. Build, tag e push
-    
-    
+        c. Build, tag e push
+        
                 $ docker build -t localhost:5000/appfluentd/spam-fluentd:latest .
                 $ docker push localhost:5000/appfluentd/spam-fluentd:latest
-           
-    
-        4. Ora è disponibile su un registry ed è possibile usarla da parte terzi
+                                       
+            
+                Ora è disponibile su un registry ed è possibile usarla come container in un deployement
+        
+   6. 
+        
+        
+        
         
         
         

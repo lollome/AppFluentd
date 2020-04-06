@@ -5,6 +5,7 @@ metadata:
     app: spamfluentd
     release: spamfluentd-1
   name: s-spamfluentd
+  namespace: kube-spam
 spec:
   type: NodePort
   ports:

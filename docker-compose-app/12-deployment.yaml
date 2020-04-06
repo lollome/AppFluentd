@@ -5,6 +5,7 @@ metadata:
     app: spamfluentd
     release: spamfluentd-1
   name: d-spamfluentd
+  namespace: kube-spam
 spec:
   replicas: 1
   revisionHistoryLimit: 10
@@ -74,4 +75,10 @@ spec:
         secret:
 #          defaultMode: 0444
           secretName: app-035002
+
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
 

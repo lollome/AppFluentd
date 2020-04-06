@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @SpringBootApplication
 public class ServerFluentd
 {
+    // TODO queste non vengono raggiunte dall'esterno: da capire!!!
     @RequestMapping("/")
     public String home() {
         return "Hello Docker World";

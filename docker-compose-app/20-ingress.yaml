@@ -3,13 +3,16 @@ kind: Ingress
 metadata:
   name: webspam-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  backend:
+    serviceName: default-http-backend
+    servicePort: 8080
   rules:
   - host: spamfluentd.info
-  - http:
+    http:
       paths:
-        - path: /
-          backend:
-            serviceName: s-spamfluentd
-            servicePort: 8080
+      - path: /
+        backend:
+          serviceName: s-spamfluentd
+          servicePort: 8080

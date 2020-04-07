@@ -50,9 +50,7 @@ spec:
         #- secretRef:
         #    name: gestioneservizi-test-env
 
-        volumeMounts:
-        - name: secret-app
-          mountPath: /etc/app.d/01-secret/
+
 
           #        readinessProbe:
           #failureThreshold: 3
@@ -70,12 +68,6 @@ spec:
           requests:
             cpu: 100m
  
-      volumes:
-      - name: secret-app
-        secret:
-#          defaultMode: 0444
-          secretName: app-035002
-
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler

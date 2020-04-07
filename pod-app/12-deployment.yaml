@@ -16,8 +16,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+      maxSurge: 1       # The value cannot be 0 if MaxUnavailable is 0
+      maxUnavailable: 0 #The value cannot be 0 if .spec.strategy.rollingUpdate.maxSurge is 0
   minReadySeconds: 30
 
   template:

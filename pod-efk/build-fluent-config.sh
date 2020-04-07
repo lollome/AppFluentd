@@ -1,0 +1,1 @@
+kubectl create configmap fluentd-config --namespace=kube-logging --from-file=fluent-config/ --dry-run -o yaml > 31-fluentd_config.yaml

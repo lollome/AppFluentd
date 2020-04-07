@@ -59,7 +59,7 @@
     
         a. Creare il registry su minikube (dal file yml)
                 
-                $ kubectl create -f kube-registry.yaml
+                $ kubectl create -f pod-registry/kube-registry.yaml
                 
               possiamo visualizzare i pods e vedere specificatamente il kube-registry-v0-xxxx creato; 
                 
@@ -80,6 +80,9 @@
         c. Build, tag e push
         
                 $ docker build -t localhost:5000/appfluentd/spam-fluentd:latest .
+                
+                
+                
                 $ docker push localhost:5000/appfluentd/spam-fluentd:latest
                                        
             
@@ -324,9 +327,10 @@
     </filter>
    
  
- poi inviati nei due store del match 
- - elasticsearch
- - stdout
+ poi inviati nei due store del match
+ 
+   - elasticsearch
+   - stdout
  
  
      <match *.**>
@@ -373,3 +377,28 @@
   
     nel primo a causa del filter viene aggiunto host_param
  
+
+   #### Stack EFK su kubernates
+   
+   
+   deploy su registry la versione fluentd 1.0
+   
+    $ ./gradlew clean build
+    $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
+    $ docker build -t localhost:5000/appfluentd/spam-fluentd:1.0 .
+    $ docker push localhost:5000/appfluentd/spam-fluentd:1.0
+   
+   
+   modifico in deployament.yaml la image della app
+      
+    image: localhost:5000/appfluentd/spam-fluentd:1.0
+   
+   e riapplico tutto (per essere veloce potevo fare solo il deployament)
+   
+    $ kubectl replace --force -f pod-app/
+   
+   
+   
+   
+   
+   

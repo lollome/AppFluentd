@@ -34,9 +34,9 @@ spec:
         - containerPort: 8080
           protocol: TCP
 
-        image: localhost:5000/appfluentd/spam-fluentd:latest
+        image: localhost:5000/appfluentd/spam-fluentd:1.0
       #  image: registry.gitlab.com/asict-framework/polij-deploy/apps/gestioneservizi:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         #args: ['/bin/ls', '-al', '/etc/polij']
         # al momento non usiamo in alcun modo l'environment per la configurazione
         #env:

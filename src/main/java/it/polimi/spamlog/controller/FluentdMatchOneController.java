@@ -1,5 +1,6 @@
 package it.polimi.spamlog.controller;
 
+import it.logging.CustomFluentLogger;
 import org.fluentd.logger.FluentLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class FluentdMatchOneController {
 
     //private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = FluentLogger.getLogger("matchone.test");
+    private static FluentLogger LOG = CustomFluentLogger.getLogger("matchone.test");
 
 
     @GetMapping

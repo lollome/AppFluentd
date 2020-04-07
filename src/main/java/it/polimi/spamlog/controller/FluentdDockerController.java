@@ -1,5 +1,6 @@
 package it.polimi.spamlog.controller;
 
+import it.logging.CustomFluentLogger;
 import org.fluentd.logger.FluentLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class FluentdDockerController {
 
     //private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = FluentLogger.getLogger("ping-mmul.test");
+    private static FluentLogger LOG = CustomFluentLogger.getLogger("ping-mmul.test");
 
 
 

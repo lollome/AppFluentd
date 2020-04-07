@@ -16,7 +16,7 @@ apply plugin: 'io.spring.dependency-management'
 
 bootJar {
     baseName = 'spam-fluentd'
-    version =  '0.1.0'
+    version =  '1.0.0'
 }
 
 group 'it.polimi'

@@ -5,7 +5,7 @@
 /deploy/
 **/tmp/
 /build/build*/
-
+/build/
 # Estensioni
 #*.jar
 #*.zip

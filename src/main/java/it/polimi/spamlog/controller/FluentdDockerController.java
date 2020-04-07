@@ -1,5 +1,6 @@
 package it.polimi.spamlog.controller;
 
+import org.fluentd.logger.FluentLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,9 @@ import java.util.Map;
 public class FluentdDockerController {
 
 
-    private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
+    //private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    ///private static FluentLogger LOG = FluentLogger.getLogger("ping-mmul.test");
+    private static FluentLogger LOG = FluentLogger.getLogger("ping-mmul.test");
 
 
 
@@ -31,7 +32,7 @@ public class FluentdDockerController {
         data.put("param1", param);
         data.put("param2", "Hello fluent");
 
-        LOG.info("log", data);
+        LOG.log("log", data);
 
 
         return new ResponseEntity<>("ok", HttpStatus.OK);

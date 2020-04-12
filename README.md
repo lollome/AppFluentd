@@ -1,27 +1,21 @@
  
 
-   ## Deploy dell'applicazione nel cluster Minikube tramite kubernates
+   ## Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube
    
    1.  Creazione del jar
        
-            $ ./gradlew build
+    $ ./gradlew build
     
    2. Preparazione delle dipendenze per l'applicazione per quando girerà sulla docker
     
-            $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
+    $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
    
    
    3. Build della Image
    
-            $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
+    $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
        
-            -t (--tag) seguito da name:versione prepara la image 
-            
-            
-         
-         possiamo aggiungere esplicitamente il paramametro che è pue valorizzando demtro il Dockerfile
-         
-            --build-arg DEPENDENCY=build/dependency
+            -t => (--tag) seguito da name:versione prepara la image che andremo a memorizzare dentro un registry locale 
        
    infatti se eseguiamo il comando 
         
@@ -30,7 +24,7 @@
    vedremo come è memorizzata in docker
    
         REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
-        appfluentd/spam-fluentd                         latest              fefedca30972        15 seconds ago      137MB
+        appfluentd/spam-fluentd:1.0                         latest              fefedca30972        15 seconds ago      137MB
        
        
    4. Per ora non abbiamo un server dove registriamo la nosta image. Eseguimo localmente la nostra appplicazione

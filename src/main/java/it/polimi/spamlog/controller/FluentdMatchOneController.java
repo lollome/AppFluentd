@@ -18,7 +18,7 @@ public class FluentdMatchOneController {
 
     //private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = CustomFluentLogger.getLogger("matchone.test");
+    private static FluentLogger LOG = CustomFluentLogger.getLogger("pjd.spamfluentd");
 
 
     @GetMapping
@@ -30,7 +30,7 @@ public class FluentdMatchOneController {
         data.put("param1", param);
         data.put("param2", "Hello fluent");
 
-        LOG.log("test", data);
+        LOG.log("log", data);
 
 
         return new ResponseEntity<>("ok", HttpStatus.OK);

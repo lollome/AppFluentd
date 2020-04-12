@@ -18,9 +18,9 @@ import java.util.Map;
 public class FluentdDockerController {
 
 
-    //private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
+    private static final org.slf4j.Logger LOGGER =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = CustomFluentLogger.getLogger("ping-mmul.test");
+    private static FluentLogger LOG = CustomFluentLogger.getLogger("spamfluentd");
 
 
 
@@ -35,6 +35,8 @@ public class FluentdDockerController {
 
         LOG.log("log", data);
 
+
+        LOGGER.info("scritto su fluentd");
 
         return new ResponseEntity<>("ok", HttpStatus.OK);
 

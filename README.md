@@ -13,7 +13,7 @@
    
    3. Build della Image
    
-            $ docker build  (--build-arg DEPENDENCY=build/dependency) -t appfluentd/spam-fluentd:latest --rm=true .
+            $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
        
             -t (--tag) seguito da name:versione prepara la image 
             
@@ -273,7 +273,7 @@
      
         UP DOCKER 
          
-        docker-compose -f docker-compose.yml -f httpd/httpd.yml up
+        docker-compose -f docker-compose-efk-master/docker-compose.yml -f docker-compose-efk-master/httpd/httpd.yml up
      
     
         DOWN DOCKER
@@ -400,5 +400,7 @@
    
    
    
+   minikube service kibana -n kube-logging 
+   curl http://spamfluentd:31897/fluentd/docker?param=ciao
    
-   
+   pjd.spamfluentd -> pjd.pjd.spamfluentd

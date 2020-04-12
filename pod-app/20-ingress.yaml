@@ -9,7 +9,7 @@ spec:
     serviceName: default-http-backend
     servicePort: 8080
   rules:
-  - host: spamfluentd.info
+  - host: spamfluentd
     http:
       paths:
       - path: /

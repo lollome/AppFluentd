@@ -5,9 +5,9 @@ metadata:
     app: spamfluentd
     release: spamfluentd-1
   name: s-spamfluentd
-  namespace: kube-spam
+  # namespace: kube-spam
 spec:
-  # type: NodePort
+  type: NodePort
   ports:
   - name: spamfluentd-test-http
     port: 8080

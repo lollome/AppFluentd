@@ -35,8 +35,8 @@
             
             $ docker ps -a
 
-            CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS                       PORTS               NAMES
-            9b36109e3110        appfluentd/spam-fluentd:1.0                               "java -cp app:app/li…"   2 minutes ago       Exited (1) 2 minutes ago                         agitated_sammet
+            CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS                       PORTS               NAMES
+            9b36109e3110        appfluentd/spam-fluentd:1.0  "java -cp app:app/li…"   2 minutes ago       Exited (1) 2 minutes ago                         agitated_sammet
 
 
             $ docker logs 9b36109e3110 | tail -n 10
@@ -44,205 +44,268 @@
              (docker logs container_id | tail -n 10)
    
  
-   5. Registrazione di una docker
    
-        le images docker devono essere rese disponibili per poter essere usate da terze parti
-        e per poter far ciò avremmo di un repository registry; noi non ne abbiamo uno per cui dockerizziamo un registry
-    
-        a. Creare il registry su minikube (dal file yml)
-                
-                $ kubectl create -f pod-registry/kube-registry.yaml
-                
-              possiamo visualizzare i pods e vedere specificatamente il kube-registry-v0-xxxx creato; 
-                
-                $ kubectl get po -n kube-system | grep kube-registry-v0 | \awk '{print $1;}'
-                
-              in caso non sia in stato di Running (tipo ImagePullBackOff) è possibile vedere possibili errori con il comando 
-                                
-                $ kubectl -n kube-system describe pod kube-registry-v0-xxxxx
-                
-                se andato tutto bene facciamo il forward -> punto 2
-        
-        b. Forward della porta 5000 da localhost a minikube
-    
-                $ kubectl port-forward -n kube-system kube-registry-v0-b2n5w 5000:5000
-    
-              N.B: il nome del pod varia ogni volta.
-    
-        c. Build, tag e push
-        
-                $ docker build -t localhost:5000/appfluentd/spam-fluentd:latest .
-                
-                
-                
-                $ docker push localhost:5000/appfluentd/spam-fluentd:latest
-                                       
-            
-                Ora è disponibile su un registry ed è possibile usarla come container in un deployement
-        
-   6. Deploy dell'applicazione nel cluster minikube
+   5. Deploy dell'applicazione nel cluster minikube
    
-        Come cluster usiamo minikube e per deployare l'applicazione usiamo Kubernates (k8s)
+   
+        Attraverso minikube possiamo installare un cluster e con kubelect di Kubernates (k8s) possiamo deployare
+        tutti gli oggetti necessari per il sistema che vogliamo creare
         
-        (per installazione di minikube si rimanda ad altri manuali)
+        A) Installazione del POD EFK (Elastichsearch Fluentd Kibana)
+        B) Installazione del POD registry dove depositiamo l'image della app
+        C) Installazione del POD Appliazione AppFluentd
         
-        kubernate fornisce un api per la creazione degli oggetti Kubectl
-        
-        Creazione degli oggetti
-        
+        la creazione degli oggetti vie effettutata
+    
             $ kubectl create - f pathfileyaml o dir
         
-        per cui noi eseguimao 
+    
+        Qundi procediamo con il punto A
         
-            $ kubectl create -f pod-app/
+        $ kubectl create -f pod-efk/ 
         
-        in ordine creerà tutti gli oggetti descritti nei seguenti file yaml
+   con il comando di segutio esploriamo tutti gli oggetti installato 
         
-            01-namespace.yaml
-            10-secret.yaml
-            11-service.yaml
-            12-deployment.yaml
-            20-ingress.yaml
-            
-            
-            $ kubectl get pods
-            
-            NAME                                    READY   STATUS    RESTARTS   AGE
-            d-spamfluentd-569c47c85c-cn7xk          1/1     Running   0          165m
-            
-            
-            $ kubectl describe pods -n kube-spam
-            
-            in output è possibile vedere cosa si è creato e lo stato
-            
-                Name:           d-spamfluentd-569c47c85c-cckr5
-                Namespace:      kube-spam
-                Priority:       0
-                Node:           m01/172.26.0.2
-                Start Time:     Mon, 06 Apr 2020 14:18:57 +0200
-                Labels:         app=spamfluentd
-                                pod-template-hash=569c47c85c
-                                release=spamfluentd-1
-                Annotations:    <none>
-                Status:         Pending/Waiting
-                IP:             
-                IPs:            <none>
-                Controlled By:  ReplicaSet/d-spamfluentd-569c47c85c
-                Containers:
-                  spamfluentd:
-                    Container ID:   
-                    Image:          localhost:5000/appfluentd/spam-fluentd:latest
-                    Image ID:       
-                    Port:           8080/TCP
-                    Host Port:      0/TCP
-                    State:          Waiting
-                      Reason:       ContainerCreating
-                    Ready:          False
-                    Restart Count:  0
-                    Requests:
-                      cpu:        100m
-                    Environment:  <none>
-                    Mounts:
-                      /etc/app.d/01-secret/ from secret-app (rw)
-                      /var/run/secrets/kubernetes.io/serviceaccount from default-token-9p8k4 (ro)
-                Conditions:
-                  Type              Status
-                  Initialized       True 
-                  Ready             False 
-                  ContainersReady   False 
-                  PodScheduled      True 
-                Volumes:
-                  secret-app:
-                    Type:        Secret (a volume populated by a Secret)
-                    SecretName:  app-035002
-                    Optional:    false
-                  default-token-9p8k4:
-                    Type:        Secret (a volume populated by a Secret)
-                    SecretName:  default-token-9p8k4
-                    Optional:    false
-                QoS Class:       Burstable
-                Node-Selectors:  <none>
-                Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
-                                 node.kubernetes.io/unreachable:NoExecute for 300s
-                Events:
-                  Type     Reason       Age                  From               Message
-                  ----     ------       ----                 ----               -------
-                  Normal   Scheduled    <unknown>            default-scheduler  Successfully assigned kube-spam/d-spamfluentd-569c47c85c-cckr5 to m01
-                  Warning  FailedMount  12m (x4 over 23m)    kubelet, m01       Unable to attach or mount volumes: unmounted volumes=[secret-app], unattached volumes=[default-token-9p8k4 secret-app]: timed out waiting for the condition
-                  Warning  FailedMount  10m (x6 over 30m)    kubelet, m01       Unable to attach or mount volumes: unmounted volumes=[secret-app], unattached volumes=[secret-app default-token-9p8k4]: timed out waiting for the condition
-                  Warning  FailedMount  118s (x23 over 32m)  kubelet, m01       MountVolume.SetUp failed for volume "secret-app" : secret "app-035002" not found
+        $ kubectl -n kube-logging get all
+        
+        NAME                         READY   STATUS    RESTARTS   AGE
+        pod/es-cluster-0             1/1     Running   0          10h
+        pod/fluentd-4czgx            1/1     Running   0          10h
+        pod/kibana-74db58d68-hdwkt   1/1     Running   0          10h
+        
+        NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+        service/elasticsearch   ClusterIP   None             <none>        9200/TCP,9300/TCP   10h
+        service/fluentd         ClusterIP   10.103.129.130   <none>        24224/TCP           10h
+        service/kibana          NodePort    10.111.77.6      <none>        5601:30574/TCP      10h
+        
+        NAME                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+        daemonset.apps/fluentd   1         1         1       1            1           <none>          10h
+        
+        NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+        deployment.apps/kibana   1/1     1            1           10h
+        
+        NAME                               DESIRED   CURRENT   READY   AGE
+        replicaset.apps/kibana-74db58d68   1         1         1       10h
+        
+        NAME                          READY   AGE
+        statefulset.apps/es-cluster   1/1     10h
 
-            
-            
-            considerando che ogni ooggetto è stato creato sotto namespce kube-spam
-            
-            $ kubectl get pods -n kube-sapm
-            
+        
+   I primi tre oggetto sono i tre POD del EFK e subito sotto i rispettivi servizi con cui ci possiamo interfacciare dall'esterno
+        
+   Quello che ci interessa è che il servizio fluentd risponde, internamente al cluster, con i seguenti
+   
+        host =  fluentd.kube-logging.svc.cluster.local
+        port = 24224
+       
+   per cui nell'applicazione AppFluentd, class it.logging.CustomFluentLogger ho configuato come segue
+       
+       
+    public static FluentLogger getLogger(String tagPrefix)
+    {
+       return FluentLogger.getLogger(tagPrefix,"fluentd.kube-logging.svc.cluster.local",24224);
+    }
+    
+    
+    possiamo avviare kibana con il seguente comando
+    
+    
+    $ minikube -n kube-logging service kibana
+    
+    ci verrà presentata la dashboard di kibana dove è possibile creare l'indice e osservare i vari log (dopo che eseguiamo i punti successivi)    
+      
+   Ora possiamo procede con il punto B
+   Abbiamo di memorizzare l'applicazizone in un registri perchè sarà il container del POD dell'applicazione
+      
+                
+   
+     a. Creare il registry su minikube (dal file yml)
              
-                NAME                             READY   STATUS              RESTARTS   AGE
-                d-spamfluentd-569c47c85c-cckr5   0/1     ContainerCreating   0          25m
-                
-            $ kubectl describe pod d-spamfluentd-569c47c85c-cn7xk
-                
-            $ kubectl get service -n kube-spam
-              
-              NAME            TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
-              s-spamfluentd   NodePort   10.96.95.33   <none>        8080:30404/TCP   26m
-              
-            $ kubectl get deployment nginx-deployment -o yaml
-              aiuta a capire lo stato del deployment
+             $ kubectl create -f pod-registry/kube-registry.yaml
+             
+           possiamo visualizzare i pods e vedere specificatamente il kube-registry-v0-xxxx creato; 
+             
+             $ kubectl get po -n kube-system | grep kube-registry-v0 | \awk '{print $1;}'
+             
+           in caso non sia in stato di Running (tipo ImagePullBackOff) è possibile vedere possibili errori con il comando 
+                             
+             $ kubectl -n kube-system describe pod kube-registry-v0-xxxxx
+             
+             se andato tutto bene facciamo il forward -> punto b
+     
+     b. Forward della porta 5000 da localhost a minikube
+        
+         esponiamo il servizio all'esterno
+ 
+             $ kubectl port-forward -n kube-system kube-registry-v0-b2n5w 5000:5000
+ 
+           N.B: il nome del pod varia ogni volta.
+ 
+     c. Build/tag e push
+     
+             $ docker build -t localhost:5000/appfluentd/spam-fluentd:latest .
+             
+             $ docker push localhost:5000/appfluentd/spam-fluentd:latest
+             
+             Ora è disponibile su un registry ed è possibile usarla come container in un deployement
+             
+             $ kubelct -n kube-system get pods
+             
+             $ kube-registry-proxy-7d24f     1/1     Running   0          10h
+             $ kube-registry-v0-t5bz7        1/1     Running   0          10h
+                 
+             
+             
+   Ora finalmente possiamo deployare la nostra applicazione AppFluentd 
+        
+   per cui noi eseguimao 
+        
+     $ kubectl create -f pod-app/
+        
+   in ordine creerà tutti gli oggetti descritti nei seguenti file yaml
+        
+    10-secret.yaml
+    11-service.yaml
+    12-deployment.yaml
+    20-ingress.yaml
             
+       
+   Il deployment.yaml mi crea il container con l' image dell'applicazione creata e che caricata nel registry locale 
+   ()e un volume dove inserisco una chiave privata che ora non mi serve a nulla!!! TODO)
+                   
+   Il service.yaml è un modo astratto che mi dice come esporre un'applicazione in esecuzione su un set di pod come servizio di rete.
+   
+   Per esporre il servizio all'eserno ho bisogno dell'ingress.yaml
+                   
+   per esporlo all'esterno ho necissità di altre configurazioni:
+           
+   - To enable the NGINX Ingress controller, run the following command:
+           
+        $ minikube addons enable ingress    
+                           
+        $ kubectl get ingress
+            NAME              HOSTS         ADDRESS   PORTS   AGE
+            webspam-ingress   spamfluentd             80      6h30m
+      
+      
+      
+        
+   Quindi possiamo testare se tutto è andato a buon fine
+   con i seguenti comandi
             
-            Il deployment.yaml mi crea il container con la mia image dell'applicazione creata e che scarico dal mio registro locale e un volume dove inserisco una chiave privata
-            che ora non mi serve a nulla
+    $ kubectl get all
+        
+    NAME                                READY   STATUS    RESTARTS   AGE
+    pod/d-spamfluentd-646d69dc8-trljx   1/1     Running   0          6h12m
+    
+    NAME                    TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+    service/kubernetes      ClusterIP   10.96.0.1    <none>        443/TCP          10h
+    service/s-spamfluentd   NodePort    10.98.83.2   <none>        8080:31470/TCP   6h12m
+    
+    NAME                            READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/d-spamfluentd   1/1     1            1           6h12m
+    
+    NAME                                      DESIRED   CURRENT   READY   AGE
+    replicaset.apps/d-spamfluentd-646d69dc8   1         1         1       6h12m
+
+        
+        
+        
+        
+    $ kubectl logs d-spamfluentd-646d69dc8-trljx
+        
+   stampa dei log dell'applicazione
+        
             
-            Il service.yaml mi dice il servizio che deve essere esposto
+       $ kubectl logs d-spamfluentd-646d69dc8-trljx
             
-            Un modo astratto per esporre un'applicazione in esecuzione su un set di pod come servizio di rete.
+          Name:         d-spamfluentd-646d69dc8-trljx
+          Namespace:    default
+          Priority:     0
+          Node:         m01/192.168.39.139
+          Start Time:   Sun, 12 Apr 2020 14:18:02 +0200
+          Labels:       app=spamfluentd
+                        pod-template-hash=646d69dc8
+                        release=spamfluentd-1
+          Annotations:  <none>
+          Status:       Running
+          IP:           172.17.0.9
+          IPs:
+            IP:           172.17.0.9
+          Controlled By:  ReplicaSet/d-spamfluentd-646d69dc8
+          Containers:
+            spamfluentd:
+              Container ID:   docker://666df4dc4253fa4e0b095257cb7188b6d9ab12a9288913ceffa35d57ca8355ef
+              Image:          localhost:5000/appfluentd/spam-fluentd:1.0
+              Image ID:       docker-pullable://localhost:5000/appfluentd/spam-fluentd@sha256:c8088189cb10b85c76195538e00bd8587fa19dd8cd84e0851a47a97a0bb5e34c
+              Port:           8080/TCP
+              Host Port:      0/TCP
+              State:          Running
+                Started:      Sun, 12 Apr 2020 14:18:10 +0200
+              Ready:          True
+              Restart Count:  0
+              Requests:
+                cpu:        100m
+              Environment:  <none>
+              Mounts:
+                /etc/app.d/01-secret/ from secret-app (rw)
+                /var/run/secrets/kubernetes.io/serviceaccount from default-token-zbhgg (ro)
+          Conditions:
+            Type              Status
+            Initialized       True 
+            Ready             True 
+            ContainersReady   True 
+            PodScheduled      True 
+          Volumes:
+            secret-app:
+              Type:        Secret (a volume populated by a Secret)
+              SecretName:  app-035002
+              Optional:    false
+            default-token-zbhgg:
+              Type:        Secret (a volume populated by a Secret)
+              SecretName:  default-token-zbhgg
+              Optional:    false
+          QoS Class:       Burstable
+          Node-Selectors:  <none>
+          Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s
+                           node.kubernetes.io/unreachable:NoExecute for 300s
+          Events:          <none>
+
             
-            
-            Per esporre il servizio all'eserno ho bisogno dell' ingress.yaml
-            
-            per esporlo all'esterno ho necissità di altre configurazioni:
-            
-            - To enable the NGINX Ingress controller, run the following command:
-            
-                minikube addons enable ingress
-            
-            
-            - Verify that the NGINX Ingress controller is running
-            
-                    kubectl get pods -n kube-system
-            
-                    ....
-            
-                    nginx-ingress-controller-5984b97644-rnkrg   1/1       Running   0          1m
-                    
-                    .....
-                    
-               $ kubectl get ingress
-               NAME                 HOSTS                      ADDRESS      PORTS     AGE
-               webspam-ingress      spamfluentd.info           172.26.0.2   80        43m
+          
+   Con quest'ultimo comando possiamo capire se è stata scaricata l'image della nostra applicazione
+          
+   Ci romane da configurare l'host per poter accedere dall'esterno all'applicazione.
+           
+   Add the following line to the bottom of the /etc/hosts file.
+         
+     echo "$(minikube ip) spamfluentd" | sudo tee -a /etc/hosts
+     
+     oppure aggiungere a mano nel file /etc/hostes l'ip  $ minikube ip
+     
+     192.168.39.139 spamfluentd
+      
+     mnetre con il comando possiamo capire la porta
+     
+     
+     $ kubectl get service s-spamfluentd 
+         NAME            TYPE       CLUSTER-IP   EXTERNAL-IP   PORT(S)          AGE
+         s-spamfluentd   NodePort   10.98.83.2   <none>        8080:31470/TCP   6h39m
+         
+      il servizio risponde alla porta 31470
+         
+      $ curl http://spamfluentd:31470/fluentd/matchone?param=ciao
+      $ curl http://spamfluentd:31470/fluentd/matchtwo?param=ciao
+      $ curl http://spamfluentd:31470/fluentd/docker?param=ciao
+          
                
-               Add the following line to the bottom of the /etc/hosts file.
-               
-               echo "$(minikube ip) spamfluentd.info" | sudo tee -a /etc/hosts
-               
-               oppure aggiungere a mano nel file /etc/hostes
-               
-               172.26.0.2 spamfluentd.info
-               
-               $ curl http://spamfluentd.info/fluentd/matchone?param=ciao
-                
-                response
-                    ok
-                    
-                oppure da browser 
-                
-                http://spamfluentd.info/fluentd/matchone?param=ciao
+           
+     Ora da kibana possiamo vedere i log che sono stampati dai 3 controller
+            
+   
 
                
-               
+       
                
                
     

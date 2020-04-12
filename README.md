@@ -4,39 +4,39 @@
    
    1.  Creazione del jar
        
-    $ ./gradlew build
+            $ ./gradlew build
     
    2. Preparazione delle dipendenze per l'applicazione per quando girerà sulla docker
     
-    $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
+            $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
    
    
    3. Build della Image
    
-    $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
+            $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
        
             -t => (--tag) seguito da name:versione prepara la image che andremo a memorizzare dentro un registry locale 
        
    infatti se eseguiamo il comando 
         
-    $ docker images 
+            $ docker images 
     
    vedremo come è memorizzata in docker
    
-        REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
-        appfluentd/spam-fluentd:1.0                         latest              fefedca30972        15 seconds ago      137MB
+            REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
+            appfluentd/spam-fluentd:1.0                         latest              fefedca30972        15 seconds ago      137MB
        
        
-   4. Per ora non abbiamo un server dove registriamo la nosta image. Eseguimo localmente la nostra appplicazione
+   4. Per ora non abbiamo un server dove registriamo la nostra image. Eseguimo localmente la nostra appplicazione
       
-            $ docker run -p 8080:8080 -t appfluentd/spam-fluentd
+            $ docker run -p 8080:8080 -t appfluentd/spam-fluentd:1.0
             
          vedremo la nostra app in background; per vedere i log
             
             $ docker ps -a
 
             CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS                       PORTS               NAMES
-            9b36109e3110        appfluentd/spam-fluentd                               "java -cp app:app/li…"   2 minutes ago       Exited (1) 2 minutes ago                         agitated_sammet
+            9b36109e3110        appfluentd/spam-fluentd:1.0                               "java -cp app:app/li…"   2 minutes ago       Exited (1) 2 minutes ago                         agitated_sammet
 
 
             $ docker logs 9b36109e3110 | tail -n 10
@@ -44,11 +44,9 @@
              (docker logs container_id | tail -n 10)
    
  
-
- 
    5. Registrazione di una docker
    
-        le images docker devono essere rese disponibili per poter essere usate da + parti
+        le images docker devono essere rese disponibili per poter essere usate da terze parti
         e per poter far ciò avremmo di un repository registry; noi non ne abbiamo uno per cui dockerizziamo un registry
     
         a. Creare il registry su minikube (dal file yml)

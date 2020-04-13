@@ -28,6 +28,21 @@ e aggiunta alla configurazione di fluentd
   </record>
 </filter>
 
+
+<filter matchone.**>
+  @type record_transformer
+  <record>
+    host_param "#{Socket.gethostname}"
+  </record>
+</filter>
+
+<filter matchtwo.**>
+  @type parser
+  format json # apache2, nginx, etc...
+  key_name log
+  reserve_data true
+</filter>
+
 Fatta partire applicazione Spring Boot
 
 

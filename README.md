@@ -1,6 +1,142 @@
  
    
-   # Dockerizzazione dell'applicazione
+   ## Progetto EFK (Elasticsearch-Fluentd-Kibana )
+      
+   Lo scopo del progetto è quello di scrivere i log sullo stack EFK (Elasticsearch Fluentd Kibana)
+      
+   Vogliamo eseguire 2 test
+      - 1° TEST - Installazione EFK su docker
+      - 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube (branch efk_kubernates)
+      
+      
+   ### 1° TEST - Installazione EFK su docker
+      
+   Il primo test che eseguiremo è eseguire l'applicazione AppFluent su ambiente locale la quale scrive i log  su stack EFK installato su docker e 
+      
+      
+   - Aggiungiamo nel build.gradle la libreria di fluentd
+           
+       `compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'`
+      
+      
+   usiamo la libreria con le impostazioni di default
+   
+        `private static FluentLogger LOG = FluentLogger.getLogger("spamfluentd");
+        
+        
+        ossia se esploriamo sotto vediamo che usa come host localhost e porta 24224
+        
+        public static FluentLogger getLogger(String tagPrefix) {
+                return factory.getLogger(tagPrefix, "localhost", 24224);
+            }
+        
+        `
+         
+   - Installazione docker Elasticsearch, Fluentd, and Kibana
+                                
+           
+    UP DOCKER 
+           
+        docker-compose -f docker-compose-efk-master/docker-compose.yml up
+          
+    DOWN DOCKER
+       
+        docker-compose -f docker-compose.yml -f httpd/httpd.yml down
+           
+           
+   Container instanziati
+          
+      CONTAINER ID        IMAGE                                                 COMMAND                  CREATED              STATUS              PORTS                                                                                  NAMES
+       
+       6595bdb8eabd        docker.elastic.co/kibana/kibana-oss:7.6.2                 "/usr/local/bin/dumb…"   14 minutes ago      Up 14 minutes             0.0.0.0:5601->5601/tcp                                                                 dockercomposeefkmaster_kibana_1
+       7c63666a0cfb        dockercomposeefkmaster_fluentd                            "tini -- /bin/entryp…"   14 minutes ago      Up 14 minutes             0.0.0.0:9880->9880/tcp, 5140/tcp, 0.0.0.0:24224->24224/tcp, 0.0.0.0:24224->24224/udp   dockercomposeefkmaster_fluentd_1
+       81e65a009bd3        docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.2   "/usr/local/bin/dock…"   14 minutes ago      Up 14 minutes             0.0.0.0:9200->9200/tcp, 9300/tcp                                                       dockercomposeefkmaster_elasticsearch_1
+              
+     
+      KIBANA è raggiungibile  [http://localhost:5601/app/kibana]
+              
+          
+   TEST
+   
+   Configuriamo per ricevere i log sulla porta 24224 e forwardiamo in output sia su stout che Elastichsearch.
+   
+           
+   <match *.**>
+     @type copy
+     <store>
+       @type elasticsearch
+       @id out_es
+       @log_level info
+       include_tag_key true
+       host elasticsearch
+       port 9200
+       logstash_format true
+       logstash_prefix 'logstash'
+       logstash_format true
+       logstash_dateformat %Y%m%d
+       type_name access_log_ll
+       tag_key @log_name
+       flush_interval 1s
+     </store>
+     <store>
+       @type stdout
+     </store>
+   </match>
+       
+   chiamiamo i tre controller controller con i conseguenti log che si posso osservare
+      
+   1° Controller
+          
+    $ curl -X GET http://localhost:8080/fluentd/matchone?param=ciaofluent
+    ok
+   
+    stdout =>  fluentd_1        | 2020-04-13 12:23:52 +0000 pjd.spamfluentd.log: {"param1":"ciaofluent","param2":"Hello fluent"}
+      
+   configuriamo Kibana (creiamo l'indice) e possiamo notare il seguente log
+   
+  
+    Time	                        @log_name	            param1	    param2	        message	        log
+    Apr 13, 2020 @ 14:23:52.000	pjd.spamfluentd.log	    ciaofluent	Hello fluent	 - 	            - 
+          
+      
+   2° Controller
+      
+    $ curl -X GET http://localhost:8080/fluentd/matchtwo?param=ciao_fluent
+    ok
+   
+    stout =>    fluentd_1        | 2020-04-13 12:25:22 +0000 pjd.spamfluentd.logger: {"log":"{\"name\":  \"lorenzo\"}"}
+      
+    Time	                        @log_name	            param1	    param2	        message	        log
+    Apr 13, 2020 @ 14:25:22.000	pjd.spamfluentd.logger	 - 	 - 	 - 	{"name":  "lorenzo"}
+     
+   3° Controller
+    
+    $ curl -X GET http://localhost:8080/fluentd/docker?param=ciao_fluent 
+    ok
+   
+    fluentd_1        | 2020-04-13 12:27:00 +0000 spamfluentd.log: {"param1":"ciao_fluent","param2":"Hello fluent"}
+   
+    Time	                        @log_name	            param1	    param2	        message	        log
+    Apr 13, 2020 @ 14:27:00.000	spamfluentd.log	ciao_fluent	Hello fluent	 - 	 - 
+      
+         #### Stack EFK su kubernates
+         
+         
+         deploy su registry la versione fluentd 1.0
+         
+          $ ./gradlew clean build
+          $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
+          $ docker build -t localhost:5000/appfluentd/spam-fluentd:1.0 .
+          $ docker push localhost:5000/appfluentd/spam-fluentd:1.0
+         
+         
+         modifico in deployament.yaml la image della app
+            
+          image: localhost:5000/appfluentd/spam-fluentd:1.0
+         
+         e riapplico tutto (per essere veloce potevo fare solo il deployament)
+         
+          $ kubectl replace --force -f pod-app/
    
    1.  creazione del jar
        

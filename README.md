@@ -61,27 +61,27 @@
    Configuriamo per ricevere i log sulla porta 24224 e forwardiamo in output sia su stout che Elastichsearch.
    
            
-   <match *.**>
-     @type copy
-     <store>
-       @type elasticsearch
-       @id out_es
-       @log_level info
-       include_tag_key true
-       host elasticsearch
-       port 9200
-       logstash_format true
-       logstash_prefix 'logstash'
-       logstash_format true
-       logstash_dateformat %Y%m%d
-       type_name access_log_ll
-       tag_key @log_name
-       flush_interval 1s
-     </store>
-     <store>
-       @type stdout
-     </store>
-   </match>
+       <match *.**>
+         @type copy
+         <store>
+           @type elasticsearch
+           @id out_es
+           @log_level info
+           include_tag_key true
+           host elasticsearch
+           port 9200
+           logstash_format true
+           logstash_prefix 'logstash'
+           logstash_format true
+           logstash_dateformat %Y%m%d
+           type_name access_log_ll
+           tag_key @log_name
+           flush_interval 1s
+         </store>
+         <store>
+           @type stdout
+         </store>
+       </match>
        
    chiamiamo i tre controller controller con i conseguenti log che si posso osservare
       

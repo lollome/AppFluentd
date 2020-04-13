@@ -6,156 +6,7 @@
    Vogliamo eseguire 2 test
    - 1° TEST - Installazione EFK su docker
    - 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube
-   
-   
-   ### 1° TEST - Installazione EFK su docker
-   
-   il primo test che eseguiremo è eseguire l'applicazione AppFluent su ambiente locale la quale scrive i log  su stack EFK installato su docker e 
-   
-   
-   - Aggiungiamo nel build.gradle la libreria di fluentd
-        
-    `compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'`
-   
-   
-    `public class CustomFluentLogger extends FluentLogger
-    {
-    
-        public static FluentLogger getLogger(String tagPrefix)
-        {
-            return FluentLogger.getLogger(tagPrefix,"localhost",24224);
-        }
-    
-    }`
-      
-   - Installazione docker Elasticsearch, Fluentd, and Kibana
-                             
-        
-       UP DOCKER 
-        
-       docker-compose -f docker-compose-efk-master/docker-compose.yml -f docker-compose-efk-master/httpd/httpd.yml up
-    
-    
-       DOWN DOCKER
-    
-       docker-compose -f docker-compose.yml -f httpd/httpd.yml down
-        
-        
-   Container instanziati
-       
-       CONTAINER ID        IMAGE                                                 COMMAND                  CREATED              STATUS              PORTS                                                                                  NAMES
-        
-        x        httpd:2.2.32                                          "httpd-foreground"       About a minute ago   Up About a minute   0.0.0.0:80->80/tcp                                                                     dockercomposeefkmaster_web_1
-        x        dockercomposeefkmaster_fluentd                        "tini -- /bin/entryp…"   About a minute ago   Up About a minute   0.0.0.0:9880->9880/tcp, 5140/tcp, 0.0.0.0:24224->24224/tcp, 0.0.0.0:24224->24224/udp   dockercomposeefkmaster_fluentd_1
-        x        kibana:7.2.0                                          "/usr/local/bin/kiba…"   27 hours ago         Up About a minute   0.0.0.0:5601->5601/tcp                                                                 dockercomposeefkmaster_kibana_1
-        x        docker.elastic.co/elasticsearch/elasticsearch:7.2.0   "/usr/local/bin/dock…"   27 hours ago         Up About a minute   0.0.0.0:9200->9200/tcp, 9300/tcp                                                       dockercomposeefkmaster_elasticsearch_1
-           
-  
-   KIBANA è raggiungibile  [http://localhost:5601/app/kibana]
-           
-       
-      TEST
-        
-      Dopo aver fatto partire le docker, fatto partire l'applicazione
-    
-      Ho fatto 3 controller
-    
-      `it.polimi.spamlog.FluentdMatchOneController`
-       
-      con log fluentd
-      
-      `private static FluentLogger LOG = FluentLogger.getLogger("matchone.test"); `
-       
-      e
-       
-       `it.polimi.spamlog.FluentdMatchTwoController`
-       
-      con log fluentd
-      
-      `private static FluentLogger LOG = FluentLogger.getLogger("matchtwo.test")` 
-       
-    
-     da configurazione in  fluentd.conf
-     
-     il log vengono prima filtrati
-    
-       <filter matchone.**>
-        @type record_transformer
-        <record>
-          host_param "#{Socket.gethostname}"
-        </record>
-       </filter>
-      
-    
-    poi inviati nei due store del match
-    
-      - elasticsearch
-      - stdout
-    
-    
-        <match *.**>
-          @type copy
-          <store>
-            @type elasticsearch
-            host elasticsearch
-            port 9200
-            logstash_format true
-            logstash_prefix fluentd
-            logstash_dateformat %Y%m%d
-            include_tag_key true
-            type_name access_log
-            tag_key @log_name
-            flush_interval 1s
-          </store>
-          <store>
-            @type stdout
-          </store>
-        </match>
-    
-    chiamo i due controller con i conseguenti log che si posso osservare
-   
-       primo test:
-       
-       curl -X GET http://localhost:8080/fluentd/matchone?param=ciaofluent
-      
-       2020-03-25 18:37:49 +0000 matchone.test.test: {"param1":"ciaofluent","param2":"Hello fluent","host_param":"2ae529af7aad"}
-      
-       secondo test
-       
-       curl -X GET http://localhost:8080/fluentd/matchtwo?param=ciaofluent
-      
-       2020-03-25 18:39:05 +0000 matchtwo.test.dati: {"param":"ciaofluent"}
-       
-       
-       param:ciaofluent 
-       @timestamp:Mar 25, 2020 @ 22:08:58.000 
-       @log_name:matchtwo.test.dati 
-       _id:UuyGE3EBqkgChWXa37p3 
-       _type:access_log 
-       _index:fluentd-20200325 _score: -
-    
-     
-       nel primo a causa del filter viene aggiunto host_param
-    
-   
-      #### Stack EFK su kubernates
-      
-      
-      deploy su registry la versione fluentd 1.0
-      
-       $ ./gradlew clean build
-       $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
-       $ docker build -t localhost:5000/appfluentd/spam-fluentd:1.0 .
-       $ docker push localhost:5000/appfluentd/spam-fluentd:1.0
-      
-      
-      modifico in deployament.yaml la image della app
-         
-       image: localhost:5000/appfluentd/spam-fluentd:1.0
-      
-      e riapplico tutto (per essere veloce potevo fare solo il deployament)
-      
-       $ kubectl replace --force -f pod-app/
+
 
    
    ### 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube
@@ -171,91 +22,45 @@
    
    la creazione degli oggetti vie effettutata
 
-       $ kubectl create - f pathfileyaml o dir
-   
-
-   Qundi procediamo con il punto A
-
-   1.  Creazione del jar
-       
-            $ ./gradlew build
+    $ kubectl create - f pathfileyaml o dir
     
-   2. Preparazione delle dipendenze per l'applicazione per quando girerà sulla docker
-    
-            $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
-   
-   
-   3. Build della Image
-   
-            $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
+   ##### A - Installazione del POD EFK (Elastichsearch Fluentd Kibana)
        
-            -t => (--tag) seguito da name:versione prepara la image che andremo a memorizzare dentro un registry locale 
-       
-   infatti se eseguiamo il comando 
-        
-            $ docker images 
-    
-   vedremo come è memorizzata in docker
-   
-            REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
-            appfluentd/spam-fluentd:1.0                         latest              fefedca30972        15 seconds ago      137MB
-       
-       
-   4. Per ora non abbiamo un server dove registriamo la nostra image. Eseguimo localmente la nostra appplicazione
-      
-        $ docker run -p 8080:8080 -t appfluentd/spam-fluentd:1.0
-        
-   vedremo la nostra app in background; per vedere i log
-        
-    $ docker ps -a
-
-    CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS                       PORTS               NAMES
-    9b36109e3110        appfluentd/spam-fluentd:1.0  "java -cp app:app/li…"   2 minutes ago       Exited (1) 2 minutes ago                         agitated_sammet
-
-
-    $ docker logs 9b36109e3110 | tail -n 10
-     
-     (docker logs container_id | tail -n 10)
-
- 
-   
-
-        
-        $ kubectl create -f pod-efk/ 
+    $ kubectl create -f pod-efk/ 
         
    con il comando di segutio esploriamo tutti gli oggetti installato 
         
-        $ kubectl -n kube-logging get all
-        
-        NAME                         READY   STATUS    RESTARTS   AGE
-        pod/es-cluster-0             1/1     Running   0          10h
-        pod/fluentd-4czgx            1/1     Running   0          10h
-        pod/kibana-74db58d68-hdwkt   1/1     Running   0          10h
-        
-        NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
-        service/elasticsearch   ClusterIP   None             <none>        9200/TCP,9300/TCP   10h
-        service/fluentd         ClusterIP   10.103.129.130   <none>        24224/TCP           10h
-        service/kibana          NodePort    10.111.77.6      <none>        5601:30574/TCP      10h
-        
-        NAME                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
-        daemonset.apps/fluentd   1         1         1       1            1           <none>          10h
-        
-        NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-        deployment.apps/kibana   1/1     1            1           10h
-        
-        NAME                               DESIRED   CURRENT   READY   AGE
-        replicaset.apps/kibana-74db58d68   1         1         1       10h
-        
-        NAME                          READY   AGE
-        statefulset.apps/es-cluster   1/1     10h
+    $ kubectl -n kube-logging get all
+    
+    NAME                         READY   STATUS    RESTARTS   AGE
+    pod/es-cluster-0             1/1     Running   0          10h
+    pod/fluentd-4czgx            1/1     Running   0          10h
+    pod/kibana-74db58d68-hdwkt   1/1     Running   0          10h
+    
+    NAME                    TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+    service/elasticsearch   ClusterIP   None             <none>        9200/TCP,9300/TCP   10h
+    service/fluentd         ClusterIP   10.103.129.130   <none>        24224/TCP           10h
+    service/kibana          NodePort    10.111.77.6      <none>        5601:30574/TCP      10h
+    
+    NAME                     DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
+    daemonset.apps/fluentd   1         1         1       1            1           <none>          10h
+    
+    NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/kibana   1/1     1            1           10h
+    
+    NAME                               DESIRED   CURRENT   READY   AGE
+    replicaset.apps/kibana-74db58d68   1         1         1       10h
+    
+    NAME                          READY   AGE
+    statefulset.apps/es-cluster   1/1     10h
 
         
    I primi tre oggetto sono i tre POD del EFK e subito sotto i rispettivi servizi con cui ci possiamo interfacciare dall'esterno
         
-   Quello che ci interessa è che il servizio fluentd risponde, internamente al cluster, con i seguenti
+   Quello che ci interessa è che il servizio fluentd risponde, internamente al cluster, con i seguenti parametri
    
-        host =  fluentd.kube-logging.svc.cluster.local
-        port = 24224
+    host =  fluentd.kube-logging.svc.cluster.local
+    port = 24224
        
    per cui nell'applicazione AppFluentd, class it.logging.CustomFluentLogger ho configuato come segue
        
@@ -265,7 +70,6 @@
        return FluentLogger.getLogger(tagPrefix,"fluentd.kube-logging.svc.cluster.local",24224);
     }
     
-    
     possiamo avviare kibana con il seguente comando
     
     
@@ -273,10 +77,11 @@
     
     ci verrà presentata la dashboard di kibana dove è possibile creare l'indice e osservare i vari log (dopo che eseguiamo i punti successivi)    
       
-   Ora possiamo procede con il punto B
-   Abbiamo di memorizzare l'applicazizone in un registri perchè sarà il container del POD dell'applicazione
-      
-                
+   ##### B - Installazione del POD registry dove depositiamo l'image della app
+   
+    
+   Dobbiamo memorizzare l'applicazizone in un registro perchè sarà il container del POD dell'applicazione
+               
    
      a. Creare il registry su minikube (dal file yml)
              
@@ -300,24 +105,69 @@
  
            N.B: il nome del pod varia ogni volta.
  
-     c. Build/tag e push
-     
-             $ docker build -t localhost:5000/appfluentd/spam-fluentd:latest .
-             
-             $ docker push localhost:5000/appfluentd/spam-fluentd:latest
-             
-             Ora è disponibile su un registry ed è possibile usarla come container in un deployement
-             
-             $ kubelct -n kube-system get pods
-             
-             $ kube-registry-proxy-7d24f     1/1     Running   0          10h
-             $ kube-registry-v0-t5bz7        1/1     Running   0          10h
-                 
-             
-             
-   Ora finalmente possiamo deployare la nostra applicazione AppFluentd 
+   
+   ##### C - Installazione del POD Appliazione AppFluentd
+   
+   Creaiamo la nostra image AppFluentd che servirà per creare il container del POD dell'applicazione 
+   
+   
+   1.  Creazione del jar
+          
+    $ ./gradlew build
+       
+   2. Preparazione delle dipendenze per l'applicazione per quando girerà sulla docker
+       
+    $ mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
+      
+      
+   3. Build della Image
+      
+    $ docker build  (--build-arg DEPENDENCY=build/dependency) -t HOST_REGISTRY/appfluentd/spam-fluentd:latest --rm=true .
+  
+    -t => (--tag) seguito da name:versione prepara la image che andremo a memorizzare dentro un registry locale 
+  
+   infatti se eseguiamo il comando 
+           
+   $ docker images 
+       
+  vedremo come è memorizzata in docker
+   
+    REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
+    appfluentd/spam-fluentd:1.0                         latest              fefedca30972        15 seconds ago      137MB
+          
+          
+  Possiamo anche  eseguire localmente la nostra appplicazione
+         
+    $ docker run -p 8080:8080 -t appfluentd/spam-fluentd:1.0
+           
+  vedremo la nostra app in background; per vedere i log
+           
+    $ docker ps -a
+
+    CONTAINER ID        IMAGE                        COMMAND                  CREATED             STATUS                       PORTS               NAMES
+    9b36109e3110        appfluentd/spam-fluentd:1.0  "java -cp app:app/li…"   2 minutes ago       Exited (1) 2 minutes ago                         agitated_sammet
+
+   
+    $ docker logs 9b36109e3110 | tail -n 10
         
-   per cui noi eseguimao 
+    (docker logs container_id | tail -n 10)
+   
+    
+      
+  Quindi creiamo l'image dell'applicazione per poterla inviare al registry locale
+   
+   Build/tag e push 
+     
+     $ docker build -t localhost:5000/appfluentd/spam-fluentd:1.0 .
+     
+     $ docker push localhost:5000/appfluentd/spam-fluentd:1.0
+     
+   Ora è disponibile su un registry ed è possibile usarla come container in un deployement
+     
+        
+   Finalmente possiamo creare il POD dell'applicazione
+   
+   eseguimo il comando 
         
      $ kubectl create -f pod-app/
         
@@ -460,11 +310,6 @@
                
            
      Ora da kibana possiamo vedere i log che sono stampati dai 3 controller
-            
-   
-
-     
-   
-  
+           
    
      pjd.spamfluentd -> pjd.pjd.spamfluentd

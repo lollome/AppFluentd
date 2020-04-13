@@ -5,8 +5,8 @@
    Lo scopo del progetto è quello di scrivere i log sullo stack EFK (Elasticsearch Fluentd Kibana)
       
    Vogliamo eseguire 2 test
-      - 1° TEST - Installazione EFK su docker
-      - 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube (branch efk_kubernates)
+   - 1° TEST - Installazione EFK su docker
+   - 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube (branch efk_kubernates)
       
       
    ### 1° TEST - Installazione EFK su docker

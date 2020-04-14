@@ -1,4 +1,50 @@
-Docker compose file for setting up a EFK service
+Fluentd
+-------
+
+Gli input source di fluentd sono abilitati selezionando e configurando i plugins desiderati e usando le direttive di source
+
+Source invia eventi al motore di routing di Fluentd
+
+Un evento consiste di tre entità:
+
+tag
+time
+record
+
+- The tag is a string separated by ‘.’s (e.g. myapp.access), and is used as the directions for Fluentd’s internal routing engine. → Where an event comes from
+- The time field is specified by input plugins, and it must be in the Unix time format. → When an event happens.
+- The record is a JSON object. → Actual log content.
+
+
+
+
+
+https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/README.md
+
+Run as root
+This is for v0.12 images.
+
+In Kubernetes and default setting, fluentd needs root permission to read logs in /var/log and write pos_file to /var/log.
+ To avoid permission error, you need to set FLUENT_UID environment variable to 0 in your Kubernetes configuration.
+
+
+
+
+
+Use your configuration
+These images have default configuration and support some environment variables for parameters but it sometimes doesn't fit your case. 
+If you want to use your configuration, use ConfigMap feature.
+
+
+
+Disable systemd input
+If you don't setup systemd in the container, fluentd shows following messages by default configuration.
+
+[warn]: #0 [in_systemd_bootkube] Systemd::JournalError: No such file or directory retrying in 1s
+[warn]: #0 [in_systemd_kubelet] Systemd::JournalError: No such file or directory retrying in 1s
+[warn]: #0 [in_systemd_docker] Systemd::JournalError: No such file or directory retrying in 1s
+You can suppress these messages by setting disable to FLUENTD_SYSTEMD_CONF environment variable in your kubernetes configuration.
+
 ================================================
 
 Elasticsearch, Fluentd, and Kibana
@@ -55,3 +101,22 @@ curl -X GET http://localhost:9880/b2b/fluent
 
 
 docker logs esempiocdockerfluentd_fluentd_1 | tail -n 1
+
+
+
+@id
+The @id parameter is used to add the unique name of plugin configuration, which is used for paths of buffer/storage, logging and other purposes.
+
+
+@log_level
+This parameter is to specify plugin-specific logging level. The default log level is info. Global log level can be specified by log_level in <system>, or -v/-q command line options. The @log_level parameter overwrites logging level only for specified plugin instance.
+
+<system>
+  log_level info
+</system>
+
+<source>
+  # ...
+  @log_level debug  # show debug log only for this plugin
+</source>
+

@@ -12,8 +12,8 @@
    ### 1° TEST - Installazione EFK su docker
       
    Il primo test che eseguiremo è eseguire l'applicazione AppFluent su ambiente locale la quale scrive i log  su stack EFK installato su docker e 
-      
-      
+   
+
    - Aggiungiamo nel build.gradle la libreria di fluentd
            
        `compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'`

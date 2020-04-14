@@ -45,6 +45,11 @@ If you don't setup systemd in the container, fluentd shows following messages by
 [warn]: #0 [in_systemd_docker] Systemd::JournalError: No such file or directory retrying in 1s
 You can suppress these messages by setting disable to FLUENTD_SYSTEMD_CONF environment variable in your kubernetes configuration.
 
+- name: FLUENTD_SYSTEMD_CONF
+            value: "disable"
+          - name: FLUENTD_CONF
+            value: "custom-config/fluentd.conf"
+
 ================================================
 
 Elasticsearch, Fluentd, and Kibana

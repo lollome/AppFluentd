@@ -21,7 +21,7 @@ public class FluentdMatchTwoController
     public ResponseEntity<String> getDati(@RequestParam String param)
     {
 
-        String json = "{\"name\":  \"lorenzo\"}";
+        String json = "{\"level\":  \"debug\"}";
 
         Map<String, Object> data = new HashMap<>();
 
@@ -29,6 +29,8 @@ public class FluentdMatchTwoController
         data.put("log", json);
 
         LOG.log("logger",data);
+        logger.debug(" allora lo scriviamo questo log?");
+
 
         return new ResponseEntity<>("ok", HttpStatus.OK);
 

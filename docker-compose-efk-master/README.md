@@ -110,11 +110,14 @@ docker logs esempiocdockerfluentd_fluentd_1 | tail -n 1
 
 
 @id
-The @id parameter is used to add the unique name of plugin configuration, which is used for paths of buffer/storage, logging and other purposes.
+The @id parameter is used to add the unique name of plugin configuration,
+ which is used for paths of buffer/storage, logging and other purposes.
 
 
 @log_level
-This parameter is to specify plugin-specific logging level. The default log level is info. Global log level can be specified by log_level in <system>, or -v/-q command line options. The @log_level parameter overwrites logging level only for specified plugin instance.
+This parameter is to specify plugin-specific logging level. 
+The default log level is info. Global log level can be specified by log_level in <system>, or -v/-q command line options. 
+The @log_level parameter overwrites logging level only for specified plugin instance.
 
 <system>
   log_level info

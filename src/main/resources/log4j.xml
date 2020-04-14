@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="false" threshold="null" xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- Asynchronous appender: append all you appenders here! -->
+    <appender name="ASYNC" class="org.apache.log4j.AsyncAppender">
+        <appender-ref ref="FLUENTD"/>
+    </appender>
+
+    <appender class="io.github.elbryan.fluentd4log4j.FluentdAppender" name="FLUENTD">
+        <param name="Threshold" value="DEBUG"/>
+        <param name="host" value="localhost"/>
+        <param name="tagPrefix" value="gestione_servizi"/>
+        <param name="tag" value="view" />
+    </appender>
+
+
+
+    <category additivity="true" name="it.polimi.spamlog"/>
+
+    <category additivity="true" name="it">
+        <priority value="DEBUG"/>
+        <appender-ref ref="FLUENTD"/>
+    </category>
+
+    <root>
+        <priority value="ERROR"/>
+    </root>
+
+</log4j:configuration>

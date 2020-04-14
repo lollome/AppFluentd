@@ -293,7 +293,7 @@
      oppure aggiungere a mano nel file /etc/hostes l'ip  $ minikube ip
      
      192.168.39.139 spamfluentd
-      
+     
      mnetre con il comando possiamo capire la porta
      
      

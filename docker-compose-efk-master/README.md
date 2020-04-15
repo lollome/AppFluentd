@@ -50,19 +50,6 @@ You can suppress these messages by setting disable to FLUENTD_SYSTEMD_CONF envir
           - name: FLUENTD_CONF
             value: "custom-config/fluentd.conf"
 
-
-
-By default, Kibana guesses that you’re working with log data being fed into Elasticsearch by Logstash.
-[https://www.elastic.co/guide/en/kibana/current/index-patterns.html]
-
-So, in the file fluentd.conf the value for index_name defaulted to ‘logstash’.
-
-index_name “#{ENV[‘FLUENT_ELASTICSEARCH_LOGSTASH_INDEX_NAME’] || ‘fluentd’}”
-
-
-logstash_format superseded the parameter index_name
-
-
 ================================================
 
 Elasticsearch, Fluentd, and Kibana
@@ -92,6 +79,21 @@ e aggiunta alla configurazione di fluentd
   </record>
 </filter>
 
+
+<filter matchone.**>
+  @type record_transformer
+  <record>
+    host_param "#{Socket.gethostname}"
+  </record>
+</filter>
+
+<filter matchtwo.**>
+  @type parser
+  format json # apache2, nginx, etc...
+  key_name log
+  reserve_data true
+</filter>
+
 Fatta partire applicazione Spring Boot
 
 
@@ -104,3 +106,25 @@ curl -X GET http://localhost:9880/b2b/fluent
 
 
 docker logs esempiocdockerfluentd_fluentd_1 | tail -n 1
+
+
+
+@id
+The @id parameter is used to add the unique name of plugin configuration,
+ which is used for paths of buffer/storage, logging and other purposes.
+
+
+@log_level
+This parameter is to specify plugin-specific logging level. 
+The default log level is info. Global log level can be specified by log_level in <system>, or -v/-q command line options. 
+The @log_level parameter overwrites logging level only for specified plugin instance.
+
+<system>
+  log_level info
+</system>
+
+<source>
+  # ...
+  @log_level debug  # show debug log only for this plugin
+</source>
+

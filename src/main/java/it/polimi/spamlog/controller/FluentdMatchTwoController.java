@@ -1,6 +1,5 @@
 package it.polimi.spamlog.controller;
 
-import it.logging.CustomFluentLogger;
 import org.fluentd.logger.FluentLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,22 +12,23 @@ import java.util.*;
 @RequestMapping("/fluentd")
 public class FluentdMatchTwoController
 {
-    //private static final org.slf4j.Logger LOG =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
+    private static final org.slf4j.Logger logger =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = CustomFluentLogger.getLogger("pjd.spamfluentd");
+    private static FluentLogger LOG = FluentLogger.getLogger("pjd.controller");
 
     @GetMapping
     @RequestMapping("/matchtwo")
     public ResponseEntity<String> getDati(@RequestParam String param)
     {
 
-        String json = "{\"name\":  \"lorenzo\"}";
-
+        String json = "{\"level\":  \"debug\"}";
         Map<String, Object> data = new HashMap<>();
+        data.put("data", json);
 
-        data.put("log", json);
+        //LOG.log("log",data);
 
-        LOG.log("logger",data);
+        logger.debug(" Questo è un log Slf4j");
+
 
         return new ResponseEntity<>("ok", HttpStatus.OK);
 

@@ -14,7 +14,7 @@ public class FluentdMatchTwoController
 {
     private static final org.slf4j.Logger logger =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = FluentLogger.getLogger("pjd.spamfluentd");
+    private static FluentLogger LOG = FluentLogger.getLogger("pjd.controller");
 
     @GetMapping
     @RequestMapping("/matchtwo")
@@ -22,14 +22,12 @@ public class FluentdMatchTwoController
     {
 
         String json = "{\"level\":  \"debug\"}";
-
         Map<String, Object> data = new HashMap<>();
+        data.put("data", json);
 
+        //LOG.log("log",data);
 
-        data.put("log", json);
-
-        LOG.log("logger",data);
-        logger.debug(" allora lo scriviamo questo log?");
+        logger.debug(" Questo è un log Slf4j");
 
 
         return new ResponseEntity<>("ok", HttpStatus.OK);

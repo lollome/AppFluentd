@@ -19,7 +19,7 @@ public class FluentdDockerController {
 
     private static final org.slf4j.Logger LOGGER =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = FluentLogger.getLogger("spamfluentd");
+    private static FluentLogger LOG = FluentLogger.getLogger("pjd.spamfluentd");
 
 
 
@@ -33,6 +33,7 @@ public class FluentdDockerController {
         data.put("param2", "Hello fluent");
 
         LOG.log("log", data);
+
         LOGGER.info("scritto su fluentd");
 
         return new ResponseEntity<>("ok", HttpStatus.OK);

@@ -17,7 +17,7 @@ public class FluentdMatchOneController {
 
     private static final org.slf4j.Logger logger =  org.slf4j.LoggerFactory.getLogger(FluentdMatchOneController.class);
 
-    private static FluentLogger LOG = FluentLogger.getLogger("pjd.spamfluentd");
+    private static FluentLogger LOG = FluentLogger.getLogger("pjd.view");
 
 
     @GetMapping
@@ -27,7 +27,7 @@ public class FluentdMatchOneController {
 
         Map<String, Object> data = new HashMap<>();
         data.put("param1", param);
-        data.put("param2", "Hello fluent");
+        data.put("param2", "Spam Fluent");
 
         LOG.log("log", data);
 

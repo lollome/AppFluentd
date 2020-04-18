@@ -2,16 +2,12 @@
    ## Progetto EFK (Elasticsearch-Fluentd-Kibana )
    
    Lo scopo del progetto è quello di scrivere i log sullo stack EFK (Elasticsearch Fluentd Kibana)
+   deployando il progetto in un cluster kubernates creato tramite minikube
    
-   Vogliamo eseguire 2 test
-   - 1° TEST - Installazione EFK su docker
-   - 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube
+   nel branch master il progetto di un sistema efk su docker e applicazione locale per provare i test prima di portarli in kubernates
+   
+   ### Passi per deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube
 
-
-   
-   ### 2° TEST - Deploy dell'applicazione AppFluentd in un cluster Kubernates creato tramite Minikube
-   
-      
       
    Attraverso minikube possiamo installare un cluster e con kubelect di Kubernates (k8s) possiamo deployare
    tutti gli oggetti necessari per il sistema che vogliamo creare

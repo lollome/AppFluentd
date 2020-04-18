@@ -28,6 +28,18 @@
         
     $ kubectl -n kube-logging get all
     
+    situazione iniziale
+    NAME                         READY   STATUS              RESTARTS   AGE
+    pod/es-cluster-0             0/1     Init:0/3            0          20s
+    pod/fluentd-txlvt            0/1     Init:0/1            0          20s
+    pod/kibana-74db58d68-lnt9n   0/1     ContainerCreating   0          20s
+    
+    
+   i pod sono in creazione
+    
+   alla fine avremo
+    
+    
     NAME                         READY   STATUS    RESTARTS   AGE
     pod/es-cluster-0             1/1     Running   0          10h
     pod/fluentd-4czgx            1/1     Running   0          10h
@@ -66,11 +78,14 @@
        return FluentLogger.getLogger(tagPrefix,"fluentd.kube-logging.svc.cluster.local",24224);
     }
     
-    possiamo avviare kibana con il seguente comando
+   
+   possiamo avviare kibana con il seguente comando 
     
     
-    $ minikube -n kube-logging service kibana
-    
+    $ minikube -n kube-logging service kibana 
+   
+   (diamogli un bel po di tempo!!!!)
+   
     ci verrà presentata la dashboard di kibana dove è possibile creare l'indice e osservare i vari log (dopo che eseguiamo i punti successivi)    
       
    ##### B - Installazione del POD registry dove depositiamo l'image della app

@@ -9,7 +9,7 @@
 
     <appender class="io.github.elbryan.fluentd4log4j.FluentdAppender" name="FLUENTD">
         <param name="Threshold" value="DEBUG"/>
-        <param name="host" value="localhost"/>
+        <param name="host" value="fluentd.kube-logging.svc.cluster.local"/>
         <param name="tagPrefix" value="gestione_servizi"/>
         <param name="tag" value="view" />
     </appender>

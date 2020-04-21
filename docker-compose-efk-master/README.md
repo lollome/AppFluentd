@@ -128,3 +128,16 @@ The @log_level parameter overwrites logging level only for specified plugin inst
   @log_level debug  # show debug log only for this plugin
 </source>
 
+
+
+https://www.digitalocean.com/community/tutorials/how-to-use-journalctl-to-view-and-manipulate-systemd-logs
+Introduction
+
+Systemd avvelendosi centralizza i log del sytema globale
+
+Il sistema che raccoglie e gestisce questi registri è noto come journal
+
+
+Some of the most compelling advantages of systemd are those involved with process and system logging. When using other tools, logs are usually dispersed throughout the system, handled by different daemons and processes, and can be fairly difficult to interpret when they span multiple applications. Systemd attempts to address these issues by providing a centralized management solution for logging all kernel and userland processes. The system that collects and manages these logs is known as the journal.
+
+The journal is implemented with the journald daemon, which handles all of the messages produced by the kernel, initrd, services, etc. In this guide, we will discuss how to use the journalctl utility, which can be used to access and manipulate the data held within the journal.

@@ -16,7 +16,7 @@
    B) Installazione del POD registry dove depositiamo l'image della app
    C) Installazione del POD Appliazione AppFluentd
    
-   la creazione degli oggetti vie effettutata
+   la creazione degli oggetti viene effettutata
 
     $ kubectl create - f pathfileyaml o dir
     
@@ -318,9 +318,63 @@
       $ curl http://spamfluentd:31470/fluentd/matchtwo?param=ciao
       $ curl http://spamfluentd:31470/fluentd/docker?param=ciao
           
+     
+     
+     
                
            
      Ora da kibana possiamo vedere i log che sono stampati dai 3 controller
            
+   -------------------
    
      pjd.spamfluentd -> pjd.pjd.spamfluentd
+     
+     
+     kubectl -n kube-logging  exec fluentd-lt26h  -it /bin/bash
+     
+     cd /var/log
+     
+     drwxr-xr-x  4 root root 4096 Apr 20 07:13 .
+     drwxr-xr-x  1 root root 4096 Oct 11  2018 ..
+     drwxr-xr-x  2 root root 4096 Apr 20 07:14 containers
+     -rw-r--r--  1 root root   66 Apr 20 07:13 fluentd-cluster-autoscaler.log.pos
+     -rw-r--r--  1 root root 2502 Apr 20 07:52 fluentd-containers.log.pos
+     -rw-r--r--  1 root root   54 Apr 20 07:13 fluentd-docker.log.pos
+     -rw-r--r--  1 root root   52 Apr 20 07:13 fluentd-etcd.log.pos
+     -rw-r--r--  1 root root   52 Apr 20 07:13 fluentd-glbc.log.pos
+     -rw-r--r--  1 root root   62 Apr 20 07:13 fluentd-kube-apiserver.log.pos
+     -rw-r--r--  1 root root   71 Apr 20 07:13 fluentd-kube-controller-manager.log.pos
+     -rw-r--r--  1 root root   58 Apr 20 07:13 fluentd-kube-proxy.log.pos
+     -rw-r--r--  1 root root   62 Apr 20 07:13 fluentd-kube-scheduler.log.pos
+     -rw-r--r--  1 root root   55 Apr 20 07:13 fluentd-kubelet.log.pos
+     -rw-r--r--  1 root root   59 Apr 20 07:13 fluentd-rescheduler.log.pos
+     -rw-r--r--  1 root root   55 Apr 20 07:13 fluentd-salt.pos
+     -rw-r--r--  1 root root   61 Apr 20 07:13 fluentd-startupscript.log.pos
+     -rw-r--r--  1 root root   79 Apr 20 07:13 kube-apiserver-audit.log.pos
+     drwxr-xr-x 13 root root 4096 Apr 20 07:11 pods
+     
+     
+     coredns-6955765f44-7xgj7_kube-system_coredns-c565ba3df8dc13d60f2da00f4bae83413b5a0fbcae5c7b9f112fbf5eac72898c.log
+     coredns-6955765f44-xfdms_kube-system_coredns-647f57f4e91961fe06fbf60795dcd7d0f2dff771beb96b8776632901fa790c5b.log
+     es-cluster-0_kube-logging_elasticsearch-4a32280224563a4452c0eef3c79e0dd9ff0b5a0ead22e38ae91d7d09ebc8d4d3.log
+     es-cluster-0_kube-logging_fix-permissions-3b77dd0c26339535ac35aca0a9cf0c8b5aff84c41b3e1e17209742e7035ac110.log
+     es-cluster-0_kube-logging_increase-fd-ulimit-ab9dd0f3eb996b27526c6f0a9c84918645e0fa49a6b5a285e5e4fcb5875eb4f4.log
+     es-cluster-0_kube-logging_increase-vm-max-map-4b63aa7b068c0fa68f91247724aeca43f630d68588898c402ccb918905681628.log
+     etcd-m01_kube-system_etcd-afe30d0115b1256c1eebbc32a56fab7e141145b3ace895e78d03207f11562d5f.log
+     fluentd-nvvn5_kube-logging_config-fluentd-450d82c782819149d7a31553c422c79fe4dbe7b047cd5404145bc608beec6826.log
+     fluentd-nvvn5_kube-logging_fluentd-69e03e56bfe40e7fb5ed164ce485afd2b49975bf15e55bd1d149690008f7f913.log
+     kibana-74db58d68-qmvqr_kube-logging_kibana-7433fc151c22cec0ec988c4bb92bc222ce3b51d990a33b2ea28327ac9a47478c.log
+     kube-apiserver-m01_kube-system_kube-apiserver-702f8c1df88b875ab11e3eb8f12cd18294731e5dc7dd0838e40e89df602f3ae4.log
+     kube-controller-manager-m01_kube-system_kube-controller-manager-c56cc748effb6d24e0dafd919633beef425b63f97b816d5d31034d309329a397.log
+     kube-proxy-72mkk_kube-system_kube-proxy-8dcba6d17c5970adb45e3a5f05e9b32dab82bb3c9865e20d2b2e800e8f14cc95.log
+     kube-scheduler-m01_kube-system_kube-scheduler-5677ee79431ae12da17eac75482fff62bdecb227b8f8744ae0b9eb92163d9ea5.log
+     storage-provisioner_kube-system_storage-provisioner-bd19fc1e39a1898deb6607d5b2b2faba1392b124b2f81b4c12e09cfcf3e15ec9.log
+     
+     
+     kubectl -n kube-logging get pods -o json > containers.txt
+     
+     
+     systemd input plugin to read logs from the systemd journal
+     
+     
+     fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins ${FLUENTD_OPT} -vv

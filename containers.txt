@@ -1,0 +1,775 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2020-04-20T09:55:13Z",
+                "generateName": "es-cluster-",
+                "labels": {
+                    "app": "elasticsearch",
+                    "controller-revision-hash": "es-cluster-864579fc5b",
+                    "statefulset.kubernetes.io/pod-name": "es-cluster-0"
+                },
+                "name": "es-cluster-0",
+                "namespace": "kube-logging",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "StatefulSet",
+                        "name": "es-cluster",
+                        "uid": "e2cda38f-2fd3-494d-ab25-7bb3493a61c2"
+                    }
+                ],
+                "resourceVersion": "998",
+                "selfLink": "/api/v1/namespaces/kube-logging/pods/es-cluster-0",
+                "uid": "16cd8650-53a4-41a8-9480-df74a295e319"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "cluster.name",
+                                "value": "k8s-logs"
+                            },
+                            {
+                                "name": "node.name",
+                                "valueFrom": {
+                                    "fieldRef": {
+                                        "apiVersion": "v1",
+                                        "fieldPath": "metadata.name"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "discovery.type",
+                                "value": "single-node"
+                            },
+                            {
+                                "name": "ES_JAVA_OPTS",
+                                "value": "-Xms512m -Xmx512m"
+                            }
+                        ],
+                        "image": "docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "elasticsearch",
+                        "ports": [
+                            {
+                                "containerPort": 9200,
+                                "name": "rest",
+                                "protocol": "TCP"
+                            },
+                            {
+                                "containerPort": 9300,
+                                "name": "inter-node",
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/share/elasticsearch/data",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-jt5qb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "hostname": "es-cluster-0",
+                "initContainers": [
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "chown -R 1000:1000 /usr/share/elasticsearch/data"
+                        ],
+                        "image": "busybox",
+                        "imagePullPolicy": "Always",
+                        "name": "fix-permissions",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/usr/share/elasticsearch/data",
+                                "name": "data"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-jt5qb",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "sysctl",
+                            "-w",
+                            "vm.max_map_count=262144"
+                        ],
+                        "image": "busybox",
+                        "imagePullPolicy": "Always",
+                        "name": "increase-vm-max-map",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-jt5qb",
+                                "readOnly": true
+                            }
+                        ]
+                    },
+                    {
+                        "command": [
+                            "sh",
+                            "-c",
+                            "ulimit -n 65536"
+                        ],
+                        "image": "busybox",
+                        "imagePullPolicy": "Always",
+                        "name": "increase-fd-ulimit",
+                        "resources": {},
+                        "securityContext": {
+                            "privileged": true
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-jt5qb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "m01",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "subdomain": "elasticsearch",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "data",
+                        "persistentVolumeClaim": {
+                            "claimName": "data-es-cluster-0"
+                        }
+                    },
+                    {
+                        "name": "default-token-jt5qb",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-jt5qb"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:56:45Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:57:36Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:57:36Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:55:15Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://7c578b7f161fddf005e1c3e92eca78622097b1ba4fa0435e668d21d59a29685d",
+                        "image": "docker.elastic.co/elasticsearch/elasticsearch-oss:7.6.2",
+                        "imageID": "docker-pullable://docker.elastic.co/elasticsearch/elasticsearch-oss@sha256:25ffe47e1e8cad3461f1b0c1a865096fbf356bc74f72537c9b226d758142ba91",
+                        "lastState": {},
+                        "name": "elasticsearch",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-04-20T09:57:35Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.39.244",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "docker://9b5b4c3982e7e86fd3d8635d048c3a0fe92123563692691220c85ae33e6bfd32",
+                        "image": "busybox:latest",
+                        "imageID": "docker-pullable://busybox@sha256:a8cf7ff6367c2afa2a90acd081b484cbded349a7076e7bdf37a05279f276bc12",
+                        "lastState": {},
+                        "name": "fix-permissions",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://9b5b4c3982e7e86fd3d8635d048c3a0fe92123563692691220c85ae33e6bfd32",
+                                "exitCode": 0,
+                                "finishedAt": "2020-04-20T09:56:20Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-04-20T09:56:20Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "docker://998a4ad13935d6c48ebd105475dc364fe6bd5bc53ffe722abf03a9b231b45ae8",
+                        "image": "busybox:latest",
+                        "imageID": "docker-pullable://busybox@sha256:a8cf7ff6367c2afa2a90acd081b484cbded349a7076e7bdf37a05279f276bc12",
+                        "lastState": {},
+                        "name": "increase-vm-max-map",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://998a4ad13935d6c48ebd105475dc364fe6bd5bc53ffe722abf03a9b231b45ae8",
+                                "exitCode": 0,
+                                "finishedAt": "2020-04-20T09:56:40Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-04-20T09:56:40Z"
+                            }
+                        }
+                    },
+                    {
+                        "containerID": "docker://9df97a980f5d04e79b038cd25dbf5376112d2c56d2c9f7ee2328d5564c1eb9ad",
+                        "image": "busybox:latest",
+                        "imageID": "docker-pullable://busybox@sha256:a8cf7ff6367c2afa2a90acd081b484cbded349a7076e7bdf37a05279f276bc12",
+                        "lastState": {},
+                        "name": "increase-fd-ulimit",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://9df97a980f5d04e79b038cd25dbf5376112d2c56d2c9f7ee2328d5564c1eb9ad",
+                                "exitCode": 0,
+                                "finishedAt": "2020-04-20T09:56:44Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-04-20T09:56:44Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "172.17.0.6",
+                "podIPs": [
+                    {
+                        "ip": "172.17.0.6"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2020-04-20T09:55:15Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2020-04-20T09:55:13Z",
+                "generateName": "fluentd-",
+                "labels": {
+                    "app": "fluentd",
+                    "controller-revision-hash": "6f7d647467",
+                    "pod-template-generation": "1"
+                },
+                "name": "fluentd-lt26h",
+                "namespace": "kube-logging",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "DaemonSet",
+                        "name": "fluentd",
+                        "uid": "1579166a-1015-45ba-ac7b-f7c4f2694020"
+                    }
+                ],
+                "resourceVersion": "858",
+                "selfLink": "/api/v1/namespaces/kube-logging/pods/fluentd-lt26h",
+                "uid": "71882ef9-f28f-4cc9-a884-bb2f786b7fe9"
+            },
+            "spec": {
+                "affinity": {
+                    "nodeAffinity": {
+                        "requiredDuringSchedulingIgnoredDuringExecution": {
+                            "nodeSelectorTerms": [
+                                {
+                                    "matchFields": [
+                                        {
+                                            "key": "metadata.name",
+                                            "operator": "In",
+                                            "values": [
+                                                "m01"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "FLUENT_ELASTICSEARCH_HOST",
+                                "value": "elasticsearch.kube-logging.svc.cluster.local"
+                            },
+                            {
+                                "name": "FLUENT_ELASTICSEARCH_PORT",
+                                "value": "9200"
+                            },
+                            {
+                                "name": "FLUENT_ELASTICSEARCH_SCHEME",
+                                "value": "http"
+                            },
+                            {
+                                "name": "FLUENT_UID",
+                                "value": "0"
+                            }
+                        ],
+                        "image": "fluent/fluentd-kubernetes-daemonset:v1.3.0-debian-elasticsearch",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "fluentd",
+                        "resources": {
+                            "limits": {
+                                "memory": "512Mi"
+                            },
+                            "requests": {
+                                "cpu": "100m",
+                                "memory": "200Mi"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/log",
+                                "name": "varlog"
+                            },
+                            {
+                                "mountPath": "/var/lib/docker/containers",
+                                "name": "varlibdockercontainers",
+                                "readOnly": true
+                            },
+                            {
+                                "mountPath": "/fluentd/etc",
+                                "name": "config-path"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "fluentd-token-4cscf",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "initContainers": [
+                    {
+                        "args": [
+                            "cp -vf /fluentd/etc2/* /fluentd/etc/"
+                        ],
+                        "command": [
+                            "/bin/sh",
+                            "-c"
+                        ],
+                        "image": "busybox",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "config-fluentd",
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/fluentd/etc",
+                                "name": "config-path"
+                            },
+                            {
+                                "mountPath": "/fluentd/etc2",
+                                "name": "config-source"
+                            },
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "fluentd-token-4cscf",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "nodeName": "m01",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "fluentd",
+                "serviceAccountName": "fluentd",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node-role.kubernetes.io/master"
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/disk-pressure",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/pid-pressure",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/unschedulable",
+                        "operator": "Exists"
+                    }
+                ],
+                "volumes": [
+                    {
+                        "hostPath": {
+                            "path": "/var/log",
+                            "type": ""
+                        },
+                        "name": "varlog"
+                    },
+                    {
+                        "hostPath": {
+                            "path": "/var/lib/docker/containers",
+                            "type": ""
+                        },
+                        "name": "varlibdockercontainers"
+                    },
+                    {
+                        "emptyDir": {},
+                        "name": "config-path"
+                    },
+                    {
+                        "configMap": {
+                            "defaultMode": 420,
+                            "name": "fluentd-config"
+                        },
+                        "name": "config-source"
+                    },
+                    {
+                        "name": "fluentd-token-4cscf",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "fluentd-token-4cscf"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:56:18Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:56:39Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:56:39Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:55:13Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://16c9c9558a82ad4f52dc7b2a34b64414823fa646eb01fe2b104b437bd576b673",
+                        "image": "fluent/fluentd-kubernetes-daemonset:v1.3.0-debian-elasticsearch",
+                        "imageID": "docker-pullable://fluent/fluentd-kubernetes-daemonset@sha256:005d8a54c0cc5185056929c70f172ad4145804016b86055e13079a1a6b327e62",
+                        "lastState": {},
+                        "name": "fluentd",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-04-20T09:56:38Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.39.244",
+                "initContainerStatuses": [
+                    {
+                        "containerID": "docker://52ae0c8cb080774f8c51f3d2e24ef1a9b9c08b8439fcb2b515dd196f8ee7034d",
+                        "image": "busybox:latest",
+                        "imageID": "docker-pullable://busybox@sha256:a8cf7ff6367c2afa2a90acd081b484cbded349a7076e7bdf37a05279f276bc12",
+                        "lastState": {},
+                        "name": "config-fluentd",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "docker://52ae0c8cb080774f8c51f3d2e24ef1a9b9c08b8439fcb2b515dd196f8ee7034d",
+                                "exitCode": 0,
+                                "finishedAt": "2020-04-20T09:56:18Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-04-20T09:56:18Z"
+                            }
+                        }
+                    }
+                ],
+                "phase": "Running",
+                "podIP": "172.17.0.5",
+                "podIPs": [
+                    {
+                        "ip": "172.17.0.5"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2020-04-20T09:55:13Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "creationTimestamp": "2020-04-20T09:55:13Z",
+                "generateName": "kibana-74db58d68-",
+                "labels": {
+                    "app": "kibana",
+                    "pod-template-hash": "74db58d68"
+                },
+                "name": "kibana-74db58d68-mgb5z",
+                "namespace": "kube-logging",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "kibana-74db58d68",
+                        "uid": "ca6f61d8-24e0-4313-b12b-5a2139b518f1"
+                    }
+                ],
+                "resourceVersion": "789",
+                "selfLink": "/api/v1/namespaces/kube-logging/pods/kibana-74db58d68-mgb5z",
+                "uid": "74323d02-d9b1-4e81-9033-058019939950"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "ELASTICSEARCH_URL",
+                                "value": "http://elasticsearch:9200"
+                            }
+                        ],
+                        "image": "docker.elastic.co/kibana/kibana-oss:7.6.2",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "kibana",
+                        "ports": [
+                            {
+                                "containerPort": 5601,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "1"
+                            },
+                            "requests": {
+                                "cpu": "100m"
+                            }
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-jt5qb",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "nodeName": "m01",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-jt5qb",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-jt5qb"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:55:13Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:56:15Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:56:15Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-04-20T09:55:13Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://c50e164f0871caa2c36ae0e567545fadb7129ffbbc32bef51909841d9eba8934",
+                        "image": "docker.elastic.co/kibana/kibana-oss:7.6.2",
+                        "imageID": "docker-pullable://docker.elastic.co/kibana/kibana-oss@sha256:44d7a0b35d940292b1f8f2cab30d88b5ffb686223b1ee17526561d0929fca7a2",
+                        "lastState": {},
+                        "name": "kibana",
+                        "ready": true,
+                        "restartCount": 0,
+                        "started": true,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-04-20T09:56:15Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "192.168.39.244",
+                "phase": "Running",
+                "podIP": "172.17.0.4",
+                "podIPs": [
+                    {
+                        "ip": "172.17.0.4"
+                    }
+                ],
+                "qosClass": "Burstable",
+                "startTime": "2020-04-20T09:55:13Z"
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}

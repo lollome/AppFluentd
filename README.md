@@ -378,3 +378,41 @@
      
      
      fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins ${FLUENTD_OPT} -vv
+     
+     
+   #### Image App Resin
+     
+   Nel deployment 12-deployement.yaml abbiamo specificato l'image della app
+     
+     #  image: registry.gitlab.com/asict-framework/polij-deploy/apps/gestioneservizi:latest
+     
+   il Dockerfile della app gestione servizi da cui viene generata l'image di sopra è fatta così:
+     
+     ARG BASE_IMAGE=registry.gitlab-asict.inside.polimi.it/asict/resin:4.0.62.0-jdk11
+     
+     FROM ${BASE_IMAGE}
+     
+     ARG APPLICATION=.
+     
+     COPY view/libs/test/*.war /var/resin/webapps/
+     
+     COPY controller/libs/test/*.war /var/resin/webapps/
+
+   questa prende l'image di resin e mette dentro il war della view e controller di gestioneservizi
+   
+   
+   quindi capisco come vien costruita 
+   
+   ARG BASE_IMAGE=registry.gitlab-asict.inside.polimi.it/asict/resin:4.0.62.0-jdk11
+   
+   
+   dentro docker-resin c'è la costtruzione
+   
+   cabiato host registri e messo il mio localhost:5000 (dopo averlo fatto partire punto B)
+   
+   ./build.sh
+   
+   prende i vari config e costruisce l'image del dockerfile
+   
+   vado a vederela dentro in questo modo
+   docker run --rm -it  localhost:5000/framework/polij-deploy/resin-polij-jdk11 sh

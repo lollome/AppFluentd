@@ -1,0 +1,1 @@
+cp build/libs/spam-fluentd-1.0.0.war /home/lorenzo/programmi/resin-4.0.62/webapps/

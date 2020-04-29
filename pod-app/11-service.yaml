@@ -10,9 +10,9 @@ spec:
   type: NodePort
   ports:
   - name: spamfluentd-test-http
-    port: 8080
+    port: 80
     protocol: TCP
-    targetPort: 8080 # porta interna
+    targetPort: 80 # porta interna
   # - name: gestioneservizi-test-https
   #   port: 443
   #   protocol: TCP

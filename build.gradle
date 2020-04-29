@@ -7,6 +7,9 @@ plugins {
 
 group 'it.polimi'
 version '1.0.0'
+war {
+    archiveName = 'spam-fluentd'
+}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -16,26 +19,32 @@ repositories {
 }
 
 dependencies {
-	compile("org.springframework.boot:spring-boot-starter-web"){
+	compile("org.springframework.boot:spring-boot-starter-web")/*{
 		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 		exclude group: 'ch.qos.logback', module: 'logback-classic'
 		exclude group: 'org.apache.logging.log4j', module: 'log4j-to-slf4j'
-	}
+	}*/
+	
+	// https://mvnrepository.com/artifact/log4j/log4j
+	//compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+	
+	
 // Apache commons
 	compile('org.apache.commons:commons-lang3:3.6')
 	// Apache POI
 	compile('org.apache.poi:poi-ooxml:3.17')
 
 // https://mvnrepository.com/artifact/org.fluentd/fluent-logger
-	compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'
+	//compile group: 'org.fluentd', name: 'fluent-logger', version: '0.2.11'
 
 
-	runtimeOnly 'io.github.elbryan:fluentd4log4j:1.0'
+	//runtimeOnly 'io.github.elbryan:fluentd4log4j:1.0'
 
-	runtimeOnly 'org.slf4j:slf4j-log4j12:1.7+'
+	//runtimeOnly 'org.slf4j:slf4j-log4j12:1.7+'
 
 	// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-	compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+	//compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
 
 
 	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple

@@ -7,12 +7,12 @@ metadata:
 spec:
   backend:
     serviceName: default-http-backend
-    servicePort: 8080
+    servicePort: 80
   rules:
   - host: spamfluentd
     http:
       paths:
-      - path: /
+      - path: /spam-fluentd
         backend:
           serviceName: s-spamfluentd
-          servicePort: 8080
+          servicePort: 80

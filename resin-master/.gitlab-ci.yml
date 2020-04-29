@@ -1,0 +1,69 @@
+variables:
+  RESIN_VERSION: "4.0.63"
+  RESIN_SRC: "resin-${RESIN_VERSION}-src.tar.gz"
+  REVISION: 0
+
+stages:
+   - download
+   - deploy
+
+download-resin:
+   stage: download
+   image: busybox
+   script:
+    - mkdir -p files/resin-sources
+    - export http_proxy=proxy.resources.polimi.it:8080
+    - wget "http://caucho.com/download/${RESIN_SRC}" -P files/resin-sources
+   tags:
+   - build
+   artifacts:
+     name: resin
+     paths:
+       - files/resin-sources
+     expire_in: 10 minutes
+   only:
+     - master
+
+build-jdk11:
+  dependencies:
+    - download-resin
+  variables:
+    OPENJDK_BUILD_IMAGE: adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.4_11-slim
+    OPENJDK_IMAGE: adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.4_11-slim
+    HTTPS_PROXY: proxy.resources.polimi.it:8080
+    HTTP_PROXY: proxy.resources.polimi.it:8080
+    NO_PROXY: docker,inside.polimi.it,localhost,127.0.0.1
+    BUILT_IMAGE_NAME: $CI_REGISTRY_IMAGE:$RESIN_VERSION.$REVISION-jdk11
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  stage: deploy
+  script:
+    - docker build -t "${BUILT_IMAGE_NAME}"
+         --build-arg RESIN_VERSION=${RESIN_VERSION} 
+         --build-arg RESIN_SRC=${RESIN_SRC} 
+         --build-arg OPENJDK_IMAGE=${OPENJDK_IMAGE} 
+         --build-arg OPENJDK_BUILD_IMAGE=${OPENJDK_BUILD_IMAGE} .
+    - docker push "${BUILT_IMAGE_NAME}"
+  tags:
+    - dind
+  only:
+    - master
+
+pages:
+  image: jekyll/jekyll:3
+  stage: deploy
+  script:
+    - jekyll build -s docs -d public
+  artifacts:
+    paths:
+      - public
+  tags:
+    - build
+  allow_failure: true
+  only:
+    - docs
+    - /^gl-pages(\/.+)?$/
+    - master

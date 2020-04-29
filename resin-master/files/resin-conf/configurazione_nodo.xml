@@ -1,0 +1,39 @@
+<cluster xmlns="http://caucho.com/ns/resin"
+        xmlns:resin="http://caucho.com/ns/resin/core">
+
+	<!-- COMUNICAZIONE RMI -->
+  
+	<system-property server_address="localhost:1099" />
+    <system-property jaf.common.rmi.registry_port='1099'/>
+    <system-property polij.machine.name='pippo'/>
+	<system-property java.rmi.server.hostname='localhost'/>
+	<system-property polij.node.name='polij.node.name'/>
+
+	<!-- Abilita il reverse proxy per chiamate http-->
+	<system-property jaf.view_servlet.trust_reverse_proxy_headers='true'/>
+	<!--
+	******************************************************************************
+	** FOLDER AL DI SOTTO DEL QUALE SI TROVANO I FILE CON LE CHIAVI DI SSO		**
+	******************************************************************************
+	-->
+	<system-property jaf.model2.secretFolder="/etc/polij"/>
+	<!--
+	******************************************************************************
+	** FOLDER AL DI SOTTO DEL QUALE VERRANNO MESSI I FILE DI LOG DELLE WEBAPPS	**
+	*****************************************************************************
+	-->
+	<system-property jaf.model2.logFolder="/var/log/polijlogs"/>
+  <!-- path per i file temporanei usati dalle funzionalita' di streaming -->
+  <system-property jaf.filetracker.tmpdir="/tmp/polij"/>
+
+	<!-- usati per refreshare la cache DNS (FQDN=>IP) ogni 300sec=5min -->
+	<system-property networkaddress.cache.ttl='300'/>
+	<system-property sun.net.inetaddr.ttl='300'/>
+
+	<!-- da mettere per creazione PDF -->
+	<system-property java.awt.headless='false'/>
+
+	<!-- Descrizione Area  -->
+	<system-property polij_footer_descrizione_area='Area Servizi ICT'/>
+
+</cluster>

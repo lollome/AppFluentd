@@ -38,7 +38,6 @@ PROFILE=${1:-jdk8}
 	       --build-arg OPENJDK_IMAGE=${OPENJDK_IMAGE} \
 	       --build-arg OPENJDK_BUILD_IMAGE=${OPENJDK_BUILD_IMAGE} \
 	       . || exit 1
-  docker login -u "${DOCKER_USER}" --password-stdin "${DOCKER_REGISTRY_HOST}" <<< "${DOCKER_PASSWORD}" || exit 1
   docker push ${RESIN_REMOTE_TAG} || exit 1
   docker push ${DOCKER_REGISTRY_BASE}/${RESIN_IMAGE_NAME}:latest || exit 1
 )

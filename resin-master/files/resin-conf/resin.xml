@@ -1,0 +1,55 @@
+<!-- CONFIGURAZIONE VIEW-->
+<resin xmlns="http://caucho.com/ns/resin"
+	xmlns:resin="urn:java:com.caucho.resin">
+
+	<!-- property-based Resin configuration -->
+	<resin:properties path="${__DIR__}/resin.properties" optional="false"/>
+
+	<!-- Logging configuration for the JDK logging API -->
+	<log-handler name="" level="all" path="stdout:"
+		timestamp="[%y-%m-%d %H:%M:%S.%s]"
+		format=" {${thread}} ${log.message}"/>
+
+	<logger name="" level="info"/>
+	<logger name="com.caucho" level="info"/>
+	<logger name="com.caucho.java" level="config"/>
+	<logger name="com.caucho.loader" level="config"/>
+	<logger name="com.caucho.java.JavaCompilerUtil" level="info"/>
+	
+	<javac compiler="javac" args="-source 1.8"/>
+	
+	<dependency-check-interval>0s</dependency-check-interval>
+
+	<cluster id="">
+	
+		<url-character-encoding>UTF-8</url-character-encoding>
+	
+		<!--
+		**************************************************************************
+		** Carico il file che contiene la configurazione  del nodo				**
+		**************************************************************************
+		-->
+		<resin:import path="${__DIR__}/configurazione_nodo.xml"/>
+	<!--	<resin:import path="${__DIR__}/polij-env_properties.xml"/>-->
+		<resin:import path="${__DIR__}/jaf-app-default.xml"/>
+		<server id="">
+		<!--
+		******************************************************************************
+		** Import di un XML esterno utilizzando le entita' di XML					**
+		******************************************************************************
+		-->
+			<resin:import path="${__DIR__}/parametri_jvm.xml"/>
+			<http port="80"/>
+			<!-- <http port="443">
+				<jsse-ssl >
+					<key-store-file>${jsse_keystore_file}</key-store-file>
+					<key-store-type>${jsse_keystore_type}</key-store-type>
+					<password>${jsse_keystore_password}</password>
+				</jsse-ssl>
+			</http> -->
+		</server>
+		<host id="">
+			<web-app-deploy path="webapps"/>		 
+		</host>
+	</cluster>
+</resin>

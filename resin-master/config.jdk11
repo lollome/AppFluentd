@@ -1,0 +1,5 @@
+RESIN_IMAGE_NAME=resin-polij-jdk11
+RESIN_VERSION=4.0.62 
+OPENJDK_BUILD_IMAGE=adoptopenjdk/openjdk11:x86_64-alpine-jdk-11.0.4_11-slim 
+OPENJDK_IMAGE=${OPENJDK_BUILD_IMAGE} 
+

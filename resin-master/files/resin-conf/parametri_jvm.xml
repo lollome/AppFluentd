@@ -1,0 +1,11 @@
+<!-- CONFIGURAZIONE ECLIPSE (CONTROLLER/VIEW)-->
+<resin xmlns="http://caucho.com/ns/resin"
+        xmlns:resin="http://caucho.com/ns/resin/core">
+
+	<!-- per configurare l'uso della memoria -->
+	<!-- ad uso server dovrebbe essere mx=ms per evitare fasi di allocazione/deallocazione -->
+	<!--jvm-arg>-XX:MaxPermSize=512M</jvm-arg--> <!-- Lo spazio PermGen non esiste più nella JVM 8 -->
+	<jvm-arg>-server</jvm-arg>
+	<jvm-arg>-Xms512m</jvm-arg>
+	<jvm-arg>-Xmx512m</jvm-arg>
+</resin>

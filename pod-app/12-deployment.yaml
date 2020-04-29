@@ -31,10 +31,10 @@ spec:
       containers:
       - name: spamfluentd
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           protocol: TCP
 
-        image: localhost:5000/appfluentd/spam-fluentd:1.0
+        image: localhost:5000/framework/polij-deploy/apps/flogger:1.0
       #  image: registry.gitlab.com/asict-framework/polij-deploy/apps/gestioneservizi:latest
         imagePullPolicy: Always
         #args: ['/bin/ls', '-al', '/etc/polij']

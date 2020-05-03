@@ -7,9 +7,28 @@
             <param name="ConversionPattern" value="%5p [%t] (%F:%L) - %m%n"/>
         </layout>
     </appender>
+    
+    	<!-- Log ONLY THE ERRORS to a daily-rolling File with an HtmlLayout -->
+	<appender class="jaf.common.logging.PoliJRollingFileAppender" name="FILE_LOGGER">
+  		<param name="File" value="logs/start.html"/>
+  		<param name="DatePattern" value="'.'yyyy_MM_dd_HH_mm_ss'.html'"/>
+  		<param name="Append" value="false"/>
+ 		<param name="BufferedIO" value="false"/>
+ 		<param name="MaxFileSize" value="5MB"/>
+	  	<layout class="jaf.common.logging.PoliJHTMLLayout"> 
+	    	<param name="Title" value="Jaf2 Error Log"/>
+		 </layout>
+	</appender>
+	
+	<category additivity="true" name="it">
+        <priority value="DEBUG"/>
+        <appender-ref ref="FILE_LOGGER"/>
+    </category>
+
     <root>
         <priority value="debug"/>
         <appender-ref ref="stdout"/>
+        <appender-ref ref="FILE_LOGGER"/>
     </root>
 
 </log4j:configuration>

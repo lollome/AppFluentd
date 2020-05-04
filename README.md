@@ -380,39 +380,56 @@
      fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins ${FLUENTD_OPT} -vv
      
      
-   #### Image App Resin
-     
+   #### Build Image dell'applicazione AppFluentd e Resin
+    
+   1. Costruzione image di resin
+   2. Costruzione image di AppFluent
+   
+   
    Nel deployment 12-deployement.yaml abbiamo specificato l'image della app
      
      #  image: registry.gitlab.com/asict-framework/polij-deploy/apps/gestioneservizi:latest
      
    il Dockerfile della app gestione servizi da cui viene generata l'image di sopra è fatta così:
      
-     ARG BASE_IMAGE=registry.gitlab-asict.inside.polimi.it/asict/resin:4.0.62.0-jdk11
+     	ARG BASE_IMAGE=registry.gitlab-asict.inside.polimi.it/asict/resin:4.0.62.0-jdk11
      
-     FROM ${BASE_IMAGE}
+     	FROM ${BASE_IMAGE}
      
-     ARG APPLICATION=.
+     	ARG APPLICATION=.
      
-     COPY view/libs/test/*.war /var/resin/webapps/
+     	COPY view/libs/test/*.war /var/resin/webapps/
      
-     COPY controller/libs/test/*.war /var/resin/webapps/
+     	COPY controller/libs/test/*.war /var/resin/webapps/
 
    questa prende l'image di resin e mette dentro il war della view e controller di gestioneservizi
    
    
-   quindi capisco come vien costruita 
+   Noi facciamo uso del registry locale per memorizzare le immagini e poterle scaricare
    
-   ARG BASE_IMAGE=registry.gitlab-asict.inside.polimi.it/asict/resin:4.0.62.0-jdk11
+   In docker-resin viene costruita l'image dell'application server di resin 
+   
+   mentre in docker-spr viene costruita l'image dell'applicazione.
    
    
-   dentro docker-resin c'è la costtruzione
+   sotto la root,nel file config, è spefificato l' host dove vengono memorizzate le immagini 
    
-   cabiato host registri e messo il mio localhost:5000 (dopo averlo fatto partire punto B)
+     	DOCKER_REGISTRY_HOST=localhost:5000
+	 	DOCKER_REGISTRY_BASE=${DOCKER_REGISTRY_HOST}/framework/polij-deploy
    
-   ./build.sh
+   a questo punto facciamo alcune modifiche per la creazione del pod app
    
-   prende i vari config e costruisce l'image del dockerfile
+   in pod-app, modifichiamo il file 12-deployment.yaml specificare l'image dell'app AppFluentd
    
-   vado a vederela dentro in questo modo
-   docker run --rm -it  localhost:5000/framework/polij-deploy/resin-polij-jdk11 sh
+	 	image: localhost:5000/framework/polij-deploy/apps/flogger:1.0
+   
+   il file 11-service.yaml e il file 20-ingress.yaml
+   
+   cambiando la porta da 8080 a 80 perchè ci mettiamo davanti un apache
+   
+   Quindi deployando con kubectl possiamo chiamare la nostra applicazione
+   
+   
+   http://spamfluentd:30102/flogger/logger/spam?param=lorenzo
+   
+   
